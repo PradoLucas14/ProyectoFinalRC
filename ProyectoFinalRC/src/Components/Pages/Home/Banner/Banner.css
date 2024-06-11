@@ -1,0 +1,72 @@
+.Banner{
+    height: 100vh;
+    background-image: url("../../../../assets/Img/ImgHome/Img-Banner-2.jpg");
+    background-size: cover;
+    position: relative;
+}
+.OverlayBanner{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.colum{
+    width: 50%;
+    height: 100%;
+}
+.columOne{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: linear-gradient(to right , rgba(0,0,0,0.8) 70%, transparent);
+}
+.tituloContainer{
+    margin-bottom: 25px;
+}
+.tituloContainer h1{
+    color: #fff;
+    font-size: 50px;
+    margin: 0;
+    padding: 0;
+}
+.textContainer{
+    width: 400px;
+    padding: 0;
+    margin-bottom: 30px;
+}
+.textContainer p{
+    color: #fff;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+    text-align:center;
+}
+.btnContainer{
+    border: transparent 2px solid;
+    padding: 2px;
+    border-radius: 17px;
+    transition: 0.1s ease;
+}
+.btnContainer:hover{
+    border: #fff 2px solid;
+}
+.btnContainer button{
+    height: 40px;
+    max-width: 250px;
+    width: 150px;
+    background-color: orange;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+}
+.btnContainer button p{
+    font-size: 15px;
+    font-weight: 700;
+    color: black;
+}
