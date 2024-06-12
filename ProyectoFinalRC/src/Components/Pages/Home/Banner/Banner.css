@@ -48,7 +48,7 @@
 .btnContainer{
     border: transparent 2px solid;
     padding: 2px;
-    border-radius: 17px;
+    border-radius: 7px;
     transition: 0.1s ease;
 }
 .btnContainer:hover{
@@ -58,12 +58,12 @@
     height: 40px;
     max-width: 250px;
     width: 150px;
-    background-color: orange;
+    background-color: #FB6501;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 15px;
+    border-radius: 5px;
 }
 .btnContainer button p{
     font-size: 15px;
