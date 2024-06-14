@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner'
 import "./HomePage.css"
 import About from '../About/About'
 import Services from '../ServicesAndinos/Services'
+import Products from "../Products/Products"
 
 function HomePage() {
   return (
@@ -15,6 +16,9 @@ function HomePage() {
       </div>
       <div className="Services">
         <Services/>
+      </div>
+      <div className='Products'>
+        <Products/>
       </div>
     </div>
   )
