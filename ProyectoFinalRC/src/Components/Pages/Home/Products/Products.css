@@ -1,0 +1,56 @@
+.Menu{
+    background-color: black;
+    height: auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menuContainer{
+    width: 75%;
+    padding: 0;
+}
+.titleContainerMenu{
+    border-bottom: #FB6501 2px solid;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.titleContainerMenu h2{
+    padding: 0;
+    margin: 0;
+    color: #FB6501;
+}
+.carouselContainer{
+    padding: 10px 30px;
+}
+.carousel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 30px;
+}
+.btnMenuContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btnMenu{
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+}
+.btnMenu p{
+    font-size: 20px;
+    font-weight: bold;
+    color: #FB6501;
+    padding: 0;
+    margin: 0;
+    transition: 0.2s ease;
+}
+.btnMenu p:hover{
+    text-decoration: underline;
+}
