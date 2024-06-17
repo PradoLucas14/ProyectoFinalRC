@@ -1,0 +1,40 @@
+.navbar-custom {
+    transition: padding 0.1s; /* Transición suave para el padding */
+}
+/* Media query para pantallas grandes (mayores a 992px, ajusta según necesites) */
+@media (min-width: 992px) {
+    .navbar-custom {
+      padding-left: 8% !important;
+      padding-right: 8% !important;
+    }
+}
+/* Definir estilos para la transparencia y cambio de color al hacer scroll si es necesario */
+.navbar-transparent {
+    background-color: transparent !important; /* Importante para sobrescribir estilos de Bootstrap */
+}  
+.navbar-scroll {
+    background-color: orangered; /* Color de fondo al hacer scroll */
+}
+.navTittle {
+    font-size: 24px !important; /* Tamaño de fuente deseado */
+    font-weight: bold;
+    color: #fff;
+}
+.nav-link{
+    color: #fff !important;
+    font-weight: 700 !important;
+    text-decoration: underline transparent 2px !important;
+    transition: 0.3s;
+}
+.nav-link:hover{
+    text-decoration: underline #fff 2px !important;
+}
+.custom-toggler .navbar-toggler-icon {
+    display: none;
+}
+.custom-toggler{
+    border: none !important;
+}
+.custom-toggler:focus{
+    box-shadow: none !important;
+}
