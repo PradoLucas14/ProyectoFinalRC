@@ -1,36 +1,32 @@
-import React from 'react'
-import "./Banner.css"
-import { motion } from 'framer-motion';
-
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './Banner.css';
 
 function Banner() {
   return (
-    <div className='Banner'>
-        <div className='OverlayBanner'>
-            <div className="colum columOne">
-                <div className="containerBannerOne">
-                    <div className="tituloContainer">
-                        <h1>ANDINOS</h1>
-                    </div>
-                    <div className='textContainer'>
-                        <p>
-                            "La Esencia de los Andes en Tu Mesa: 
-                            Reserva Fácilmente con Andinos y Déjate 
-                            Sorprender por Nuestros Sabores"
-                        </p>
-                    </div>
-                    <div className='btnContainer'>
-                        <button>
-                            <p>Reserva tu mesa</p>
-                        </button>
-                    </div>
+    <div className="banner">
+      <div className="overlay">
+        <Container fluid className="h-100">
+            <Row className="h-100 align-items-center">
+            <Col md={6} className="text-center text-md-start d-flex flex-column justify-content-center">
+                <div className="container1 p-0">
+                <h1 className="display-4">ANDINOS</h1>
+                <p className="lead">
+                    "La Esencia de los nuestro pais en Tu Mesa: Reserva Fácilmente con Andinos y Déjate Sorprender por Nuestros Sabores"
+                </p>
+                <Link to="/registro" className="btn btn-warning custom-btn mt-3">Regístrate</Link>
                 </div>
-            </div>
-            <div className="colum columTwo">
-            </div>
-        </div>
+            </Col>
+            <Col md={6} className="d-none d-md-block"></Col>
+            </Row>
+        </Container>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Banner
+export default Banner;
+
+
+
