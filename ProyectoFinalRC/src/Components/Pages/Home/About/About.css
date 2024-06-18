@@ -1,109 +1,104 @@
-.aboutAndinos{
-    background-image: url("../../../../assets/Img/ImgHome/Img-About-3.jpg");
-    background-size: cover;
-    background-position: center;
-    position: relative;
+.aboutAndinos {
+    background-color: black;
+    padding: 80px 9% 40px 9% !important;
+}  
+.overlayAboutAndinos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}  
+.aboutContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}  
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}  
+.columAbout {
+    height: 500px; /* Altura fija de 500px en pantallas de escritorio */
+    width: 45%; /* Ocupa el 45% del espacio disponible */
+    padding: 0 !important;
+}  
+.columOneAbout {
+    overflow: hidden;
+    width: 100%;
+}  
+.columOneAbout img {
     height: auto;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-}
-.overlayAboutAndinos{
     width: 100%;
-    height: 100%;
-    position: absolute;
-    background: linear-gradient(to top , black 5% , rgba(0,0,0,0.70)75% , black);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.andinosContainer{
-    width: 80%;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.columAbout{
-    height: 400px;
-    width: 40%;
-}
-.columOneAbout{
-    background-image: url("../../../../assets/Img/ImgHome/Img-About-2.jpg");
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-.ovelayImg{
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.1);
-}
-.columTwoAbout{
-    background-color: #282828;
+    object-fit: cover;
+}  
+.columTwoAbout {
+    background-color: #202020;
     display: flex;
     align-items: center;
     flex-direction: column;
+    padding: 0; /* Sin padding */
+    margin: 0; /* Sin margin */
+    height: 500px; /* Altura fija de 500px en pantallas de escritorio */
+}  
+.tittleContainer,
+.textContainer,
+.hoursContainer,
+.btnContainer {
+    width: 90%; /* Ancho del contenido */
 }
 .tittleContainer{
-    width: 90%;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
 }
-.tittleContainer h3{
+.tittleContainer h3 {
     color: #fff;
     font-size: 36px;
     margin: 0;
-    padding: 0;
-}
-.textContainerAbout{
-    width: 90%;
-    margin-top: 10px;
+} 
+.textContainer{
     margin-bottom: 10px;
-    padding: 0;
-}
-.textContainerAbout{
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
-    color: #fff;
 }
 .hoursContainer{
-    width: 90%;
     margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 0;
+    margin-bottom: 20px;
 }
-.hoursContainer p{
-    margin: 0;
-    padding: 0;
-    font-size: 18px;
+.textContainer p,
+.hoursContainer p {
     color: #fff;
-}
-.btnContainerAbout{
-    width: 90%;
+    font-size: 19px;
+    margin: 0;
+}  
+.btnContainer{
     margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 0;
+    margin-bottom: 30px;
 }
-.btnContainerAbout button{
-    padding: 0px;
-    margin: 0px;
+.btnContainer button {
+    padding: 0;
+    margin: 0;
     border: none;
     background-color: transparent;
+}  
+.btnCustom{
+    border: transparent 2px solid !important;
+    width: 100px;
+    height: 40px;
+    background-color: orangered !important;
+    color: #fff !important;
+    transition: 0.1s ease;
 }
-.btnContainerAbout button p{
-    color: #FB6501;
-    font-size: 20px;
-    padding: 0;
-    margin: 0;
-    font-weight: bold;
-    transition: 0.2s ease;
+.btnCustom:hover{
+    border: 2px solid #fff !important;
 }
-.btnContainerAbout button p:hover{
-    text-decoration: underline;
+@media (max-width: 768px) {
+    .row {
+      flex-direction: column; /* Cambia la dirección de las columnas en dispositivos móviles */
+    }
+    .columAbout {
+      width: 100%; /* Ocupa el 100% del ancho en dispositivos móviles */
+      height: auto; /* Altura automática en dispositivos móviles */
+    }
+    .columTwoAbout {
+      height: auto; /* Altura automática en dispositivos móviles */
+    }
 }
+  

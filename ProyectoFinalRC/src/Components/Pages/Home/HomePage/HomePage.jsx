@@ -14,12 +14,6 @@ function HomePage() {
       <div className="About">
         <About/>
       </div>
-      <div className="Services">
-        <Services/>
-      </div>
-      <div className='Products'>
-        <Products/>
-      </div>
     </div>
   )
 }
