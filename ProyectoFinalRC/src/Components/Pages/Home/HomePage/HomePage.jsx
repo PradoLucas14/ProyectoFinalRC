@@ -1,24 +1,25 @@
-import React from 'react'
-import Banner from '../Banner/Banner'
-import "./HomePage.css"
-import About from '../About/About'
-import Services from '../ServicesAndinos/Services'
-import Products from "../Products/Products"
+import React from 'react';
+import Banner from '../Banner/Banner'; // Importa el componente Banner
+import About from '../About/About';
+import Services from '../ServicesAndinos/Services';
+import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
+import './HomePage.css';
 
 function HomePage() {
   return (
     <div className='HomePage'>
       <div className="Banner">
-        <Banner/> 
+        <Banner />
+        {/* Botón para redirigir a la página de registro */}
       </div>
       <div className="About">
-        <About/>
+        <About />
       </div>
       <div className="Services">
-        <Services/>
+        <Services />
       </div>
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
