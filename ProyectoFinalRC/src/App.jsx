@@ -4,6 +4,7 @@ import './App.css';
 import HomePage from './Components/Pages/Home/HomePage/HomePage';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import Footer from './Components/Layout/Footer/Footer/Footer';
+import RegisterUser from './Components/Pages/RegisterUser/RegisterUser'
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
-          {/* Agrega más rutas según tu estructura de aplicación */}
+          <Route path="/registro" element={<RegisterUser/>} />
+          {/* Añade más rutas según la estructura de tu aplicación */}
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </Router>
   );
