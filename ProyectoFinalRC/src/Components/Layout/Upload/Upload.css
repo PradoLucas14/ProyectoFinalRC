@@ -1,0 +1,22 @@
+.boton-subir{
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: orangered;
+    color: white;
+    bottom: 40px;
+    right: 10px;
+    text-decoration: none;
+    font-size: 30px;
+    text-align: center;
+    
+}
+.boton-subir::after {
+    content: "\25B2";
+    display: inline-block;
+    margin: auto;
+}
+.boton-subir:hover{
+    background-color: rgb(216, 82, 33);
+}
