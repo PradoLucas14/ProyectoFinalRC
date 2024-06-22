@@ -67,6 +67,7 @@ const RegisterForm = () => {
                         <Form.Control className='input'
                             type="text"
                             name="username"
+                            placeholder="Ingresa tu nombre"
                             value={formData.username}
                             onChange={handleChange}
                             required
@@ -77,6 +78,7 @@ const RegisterForm = () => {
                         <Form.Control className='input'
                             type="email"
                             name="email"
+                            placeholder="Ingresa tu Email"
                             value={formData.email}
                             onChange={handleChange}
                             required
@@ -87,6 +89,7 @@ const RegisterForm = () => {
                         <Form.Control className='input'
                             type="password"
                             name="password"
+                            placeholder="Ingresa tu contraseña"
                             value={formData.password}
                             onChange={handleChange}
                             required
