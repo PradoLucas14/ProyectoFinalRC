@@ -30,9 +30,8 @@
     font-weight: bold;
 }
 .input{
-    border: 2px solid orangered !important;
-    background-color: transparent !important;
-    color: #fff !important;
+    background-color: #fff !important;
+    color: black !important;
 }
 .input:focus{
     box-shadow: none !important;

@@ -1,6 +1,7 @@
 // src/components/layout/Navbar.js
 import React, { useState, useEffect } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './Navbar.css'; // Importa tu archivo de estilos CSS donde defines las clases
 
 const AppNavbar = () => {
@@ -28,7 +29,7 @@ const AppNavbar = () => {
   const handleLogout = () => {
     setIsLoggedIn(false);
   };
-
+ 
   return (
     <Navbar expand="lg" variant="dark" className={`fixed-top navbar-custom ${navbarClass}`}>
       <Container fluid>
@@ -42,7 +43,7 @@ const AppNavbar = () => {
         </Navbar.Toggle>        <Navbar.Collapse id="navbarNav">
             <div className='mx-auto'></div>
             <Nav className="list">
-                <Nav.Link href="#" className="nav-link">Inicio</Nav.Link>
+                <Nav.Link as={Link} to="/HomePage" className="nav-link">Inicio</Nav.Link>
                 <Nav.Link href="#" className="nav-link">Galería</Nav.Link>
                 <Nav.Link href="#" className="nav-link">Contacto</Nav.Link>
                 
@@ -61,8 +62,8 @@ const AppNavbar = () => {
                 )}
 
                 {!isLoggedIn && (
-                <Nav.Link href="#" className="nav-link">Acceso</Nav.Link>
-                )}
+            <Nav.Link as={Link} to="/Login" className="nav-link">Acceso</Nav.Link>
+          )}
           </Nav>
         </Navbar.Collapse>
       </Container>
