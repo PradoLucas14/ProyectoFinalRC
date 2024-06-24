@@ -5,12 +5,12 @@ import HomePage from './Components/Pages/Home/HomePage/HomePage';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import Footer from './Components/Layout/Footer/Footer/Footer';
 import RegisterUser from './Components/Pages/RegisterUser/RegisterUser'
-import Error404 from './Components/Pages/Error404/Error404';
+import Error404 from './Components/Pages/Error404/Error404'
+
 function App() {
   return (
     <Router>
       <div className="App">
-        <Error404/>
         <Navbar />
         <Routes>
           <Route path="/" element={<HomePage />} />
