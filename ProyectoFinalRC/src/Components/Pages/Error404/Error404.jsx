@@ -18,9 +18,9 @@ const Error404 = () => {
   return (
     <div className="error404">
       {isMobile ? (
-        <img src="ruta-a-tu-imagen-para-móvil" alt="Error 404 - Mobile" />
+        <img src='./../' alt="Error 404-Mobile" />
       ) : (
-        <img src="ruta-a-tu-imagen-para-escritorio" alt="Error 404 - Desktop" />
+        <img src="" alt="Error 404-Desktop" />
       )}
       <p>¡Página no encontrada!</p>
     </div>
