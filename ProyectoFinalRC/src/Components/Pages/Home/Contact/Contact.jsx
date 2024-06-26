@@ -18,7 +18,7 @@ const handleSubmit = (event) => {
 }
   return (
     <div>
-      
+      contacto
     </div>
   )
 }
