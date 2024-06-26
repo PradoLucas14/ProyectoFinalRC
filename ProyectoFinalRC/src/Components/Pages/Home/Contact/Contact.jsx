@@ -14,7 +14,7 @@ const handleSubmit = (event) => {
     //
     const key = "hf-q7WZXSSAmLL_Sj"
 
-    emailjs.sendForm (serviceId, templateId, , key)
+    emailjs.sendForm (serviceId, templateId, key).then(result => console.log(result.text)).catch( error => console.log(error))
 }
   return (
     <div>
