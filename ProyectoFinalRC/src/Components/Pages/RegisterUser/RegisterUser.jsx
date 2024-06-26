@@ -1,37 +1,63 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Swal from 'sweetalert2';
 import "./RegisterUser.css"
 
 const RegisterForm = () => {
     const [formData, setFormData] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        termsAccepted: false // nuevo estado para el checkbox
     });
 
     const handleChange = e => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        const { name, value, type, checked } = e.target;
+        setFormData({
+            ...formData,
+            [name]: type === 'checkbox' ? checked : value
+        });
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault();
 
         // Validación de campos obligatorios
         if (!formData.username || !formData.email || !formData.password) {
-            toast.error('Por favor completa todos los campos');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor completa todos los campos',
+            });
             return;
         }
 
         // Validaciones individuales
         if (!validateUsername(formData.username)) {
-            toast.error('El nombre de usuario debe tener más de 6 caracteres');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'El nombre de usuario debe tener más de 6 caracteres',
+            });
             return;
         }
 
         if (!validatePassword(formData.password)) {
-            toast.error('La contraseña debe tener entre 6 y 20 caracteres');
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'La contraseña debe tener entre 6 y 20 caracteres',
+            });
+            return;
+        }
+
+        // Validación de aceptación de términos
+        if (!formData.termsAccepted) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Debes aceptar los términos y condiciones',
+            });
             return;
         }
 
@@ -42,10 +68,36 @@ const RegisterForm = () => {
             accountActive: true
         };
 
-        // Simular registro exitoso (aquí deberías enviar los datos al backend)
-        toast.success('Registro exitoso');
-        setFormData({ username: '', email: '', password: '' }); // Limpiar el formulario después del registro
-        console.log('Datos a enviar:', userData);
+        try {
+            const response = await fetch('http://localhost:3000/usuarios', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userData)
+            });
+
+            if (response.ok) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registro exitoso',
+                    text: 'Te has registrado exitosamente',
+                });
+                setFormData({ username: '', email: '', password: '', termsAccepted: false }); // Limpiar el formulario después del registro
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Error en el registro',
+                });
+            }
+        } catch (error) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Error en el registro',
+            });
+        }
     };
 
     const validateUsername = username => {
@@ -60,7 +112,6 @@ const RegisterForm = () => {
         <div className='register'>
            <div className="containerRegister">
                 <h2 className="mb-4">Registro de Usuario</h2>
-                <ToastContainer position="top-right" autoClose={5000} />
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3">
                         <Form.Label>Nombre de Usuario:</Form.Label>
@@ -91,6 +142,16 @@ const RegisterForm = () => {
                             name="password"
                             placeholder="Ingresa tu contraseña"
                             value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Check 
+                            type="checkbox"
+                            name="termsAccepted"
+                            label="Acepto los términos y condiciones"
+                            checked={formData.termsAccepted}
                             onChange={handleChange}
                             required
                         />

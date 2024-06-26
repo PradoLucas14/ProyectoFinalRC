@@ -45,6 +45,24 @@
       "role": "administrador",
       "status": "activo",
       "id": 1
+    },
+    {
+      "username": "LucasPrado",
+      "email": "lukasnahuelprado@gmail.com",
+      "password": "AaNl0019",
+      "termsAccepted": true,
+      "role": "cliente",
+      "accountActive": true,
+      "id": 2
+    },
+    {
+      "username": "lukasnahuelprado32@gmail.com ",
+      "email": "lukasnahuelprado32@gmail.com",
+      "password": "aaaabbb",
+      "termsAccepted": true,
+      "role": "cliente",
+      "accountActive": true,
+      "id": 3
     }
   ]
 }
