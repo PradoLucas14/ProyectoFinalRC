@@ -4,6 +4,7 @@ import "./HomePage.css"
 import About from '../About/About'
 import Services from '../ServicesAndinos/Services'
 import Products from "../Products/Products"
+import Contact from '../Contact/Contact'
 
 function HomePage() {
   return (
@@ -19,6 +20,9 @@ function HomePage() {
       </div>
       <div className='Products'>
         <Products/>
+      </div>
+      <div clasName='Contact'>
+      <Contact/>
       </div>
     </div>
   )
