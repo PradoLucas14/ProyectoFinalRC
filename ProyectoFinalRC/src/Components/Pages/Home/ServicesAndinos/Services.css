@@ -1,79 +1,28 @@
 .ServicesContainer{
     background-color: black;
-    color: #FB6501;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    padding: 80px 8% !important; 
 }
 .tittleContainerServices{
-    border-bottom: #FB6501 2px solid;
-    width: 75%;
     padding: 0;
-    margin-bottom: 10px;
+    border-bottom: 2px solid orangered;
+    margin-bottom: 60px
 }
 .tittleContainerServices h2{
-    padding: 0;
-    margin: 0;
+    color: #fff;
 }
-.cardsContainer{
-    padding: 10px;
-    width: 80%;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
-.card{
-    height: 370px;
-    margin: 10px;
-    width: 300px;
-    border: #FB6501 2px solid;
-    position: relative;
-    border-radius: 15px  0  15px  0;
-}
-.card1{
-    background-image: url("../../../../assets/Img/ImgHome/Img-Services-1.jpg");
-    background-size: cover;
-}
-.card2{
-    background-image: url("../../../../assets/Img/ImgHome/Img-Services-2.jpg");
-    background-size: cover;
-}
-.card3{
-    background-image: url("../../../../assets/Img/ImgHome/Img-Services-3.jpg");
-    background-size: cover;
-}
-.cardOverlay{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 15px  0  15px  0;
+.imgContainer{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
 }
-.imgContainer{
-    height: 200px;
-    width: 200px;
-    overflow: hidden;
-    object-fit: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.imgContainer img{
+    margin-bottom: 20px;
+    border-radius: 50%;
+    border: 2px solid orangered;
 }
-.imgContainer{
-    width: 100%;
-    height: auto;
-}
-.cardOverlay p{
-    font-size: 26px;
-    font-weight: bold;
-    color: #fff;
+.description{
+    color: orangered;
+    font-size: 24px;
+    font-weight: 500;
 }

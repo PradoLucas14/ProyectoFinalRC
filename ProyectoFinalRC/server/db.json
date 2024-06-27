@@ -1,40 +1,68 @@
 {
-    "menu": [
-    { 
-        "id": 1, 
-        "name": "Hamburguesa", 
-        "image": "https://w.forfun.com/fetch/7f/7fe483bfb112ec5acd4eb9fd4b93bd19.jpeg", 
-        "price": 10.99 
+  "menu": [
+    {
+      "id": 1,
+      "name": "Hamburguesa",
+      "image": "https://w.forfun.com/fetch/7f/7fe483bfb112ec5acd4eb9fd4b93bd19.jpeg",
+      "price": 10.99
     },
-    { 
-        "id": 2, 
-        "name": "Pizza", 
-        "image": "https://c4.wallpaperflare.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg", 
-        "price": 12.50 
+    {
+      "id": 2,
+      "name": "Pizza",
+      "image": "https://c4.wallpaperflare.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg",
+      "price": 12.5
     },
-    { 
-        "id": 3, 
-        "name": "Tarta de verduras", 
-        "image": "https://imag.bonviveur.com/quiche-de-verduras-y-queso.jpg",
-        "price": 8.75 
+    {
+      "id": 3,
+      "name": "Tarta de verduras",
+      "image": "https://imag.bonviveur.com/quiche-de-verduras-y-queso.jpg",
+      "price": 8.75
     },
-    { 
-        "id": 4, 
-        "name": "Empanadas", 
-        "image": "https://assets.elgourmet.com/wp-content/uploads/2023/03/cover_47tmx80joc_empandascarnejpg-1024x683.jpg.webp",
-        "price": 1.75 
+    {
+      "id": 4,
+      "name": "Empanadas",
+      "image": "https://assets.elgourmet.com/wp-content/uploads/2023/03/cover_47tmx80joc_empandascarnejpg-1024x683.jpg.webp",
+      "price": 1.75
     },
-    { 
-        "id": 3, 
-        "name": "Napolitana", 
-        "image": "https://33arte.com/pedidos/wp-content/uploads/2024/03/360_F_296966702_hmhZv8ggZZYQb9doi7V9eUAc97nowt4U.jpg",
-        "price": 12.50 
+    {
+      "id": 3,
+      "name": "Napolitana",
+      "image": "https://33arte.com/pedidos/wp-content/uploads/2024/03/360_F_296966702_hmhZv8ggZZYQb9doi7V9eUAc97nowt4U.jpg",
+      "price": 12.5
     },
-    { 
-        "id": 3, 
-        "name": "Papas fritas", 
-        "image": "https://s1.1zoom.me/big0/134/French_fries_Fast_food_561492_1280x853.jpg",
-        "price": 9.50 
+    {
+      "id": 3,
+      "name": "Papas fritas",
+      "image": "https://s1.1zoom.me/big0/134/French_fries_Fast_food_561492_1280x853.jpg",
+      "price": 9.5
+    }
+  ],
+  "usuarios": [
+    {
+      "name": "PradoLucas714",
+      "email": "lukasnahuelprado32@gmail.com",
+      "password": "AaNl0019",
+      "role": "administrador",
+      "status": "activo",
+      "id": 1
+    },
+    {
+      "username": "LucasPrado",
+      "email": "lukasnahuelprado@gmail.com",
+      "password": "AaNl0019",
+      "termsAccepted": true,
+      "role": "cliente",
+      "accountActive": true,
+      "id": 2
+    },
+    {
+      "username": "lukasnahuelprado32@gmail.com ",
+      "email": "lukasnahuelprado32@gmail.com",
+      "password": "aaaabbb",
+      "termsAccepted": true,
+      "role": "cliente",
+      "accountActive": true,
+      "id": 3
     }
   ]
 }
