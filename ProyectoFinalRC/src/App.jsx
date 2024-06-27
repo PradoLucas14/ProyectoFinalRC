@@ -5,6 +5,7 @@ import HomePage from './Components/Pages/Home/HomePage/HomePage';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import Footer from './Components/Layout/Footer/Footer';
 import RegisterUser from './Components/Pages/RegisterUser/RegisterUser'
+import Error404 from './Components/Pages/Error404/Error404'
 import Login from './Components/Pages/Login/Login'
 
 function App() {
