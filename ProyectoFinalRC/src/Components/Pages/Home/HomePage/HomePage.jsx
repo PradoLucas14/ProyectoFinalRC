@@ -4,11 +4,13 @@ import About from '../About/About';
 import Services from '../ServicesAndinos/Services';
 import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
 import './HomePage.css';
+import Upload from '../../../Layout/Upload/Upload';
 
 function HomePage() {
   return (
-    <div className='HomePage'>
+    <div className='HomePage' id='top'>
       <div className="Banner">
+        <Upload/>
         <Banner />
         {/* Botón para redirigir a la página de registro */}
       </div>
