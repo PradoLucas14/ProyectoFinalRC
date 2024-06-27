@@ -20,12 +20,12 @@ const handleSubmit = (event) => {
     emailjs.sendForm (serviceId, templateId, refForm.current, apikey).then(result => console.log(result.text)).catch( error => console.log(error))
 }
   return (
- 
+    <div className='section-form'>
     <form>
   
-      <button>SEND</button>
+      <button className='btn-send'>Enviar</button>
     </form>
-
+    </div>
   )
 }
 

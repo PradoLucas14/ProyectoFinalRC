@@ -22,7 +22,7 @@ function HomePage() {
       <div className='Products'>
         <Products/>
       </div>
-      <div clasName='Contact'>
+      <div className='Contact'>
       <Contact/>
       </div>
     </div>
