@@ -1,0 +1,39 @@
+/* Estilos personalizados para el componente Productos */
+.Productos{
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-right: 9% !important;
+    padding-left: 9% !important;
+    padding-bottom: 60px !important;
+    padding-top: 30px !important;
+}
+.Contanier{
+    margin: 0;
+    padding: 0;
+}
+.tittleProductos{
+    color: #fff !important;
+}
+.product-card {
+    transition: transform 0.3s;
+    min-height: 300px; /* Ajusta esta altura según sea necesario */
+    border: 2px solid orangered;
+    border-radius: 17px 0px;
+}
+
+
+.card-img-top {
+    height: 200px; /* Ajusta esta altura según sea necesario */
+    object-fit: cover;
+    border-radius: 15px 0px 0px 0px;
+}
+
+.card-body {
+    background-color: #202020; /* Fondo del cuerpo de la carta */
+    color: #fff; /* Color del texto */
+    text-align: center; /* Texto centrado */
+    border-radius: 0px 0px 15px 0px;
+}
