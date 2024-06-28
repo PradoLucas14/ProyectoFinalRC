@@ -1,0 +1,33 @@
+/* Estilos personalizados para el componente Gallery */
+.Gallery{
+    background-color: #101010;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    padding-left: 8%;
+    padding-right: 8%;
+    padding-bottom: 60px !important;
+    padding-top: 80px !important;
+}
+.gallery-title{
+}
+.gallery-title {
+    color: #fff; /* Cambiamos el color del texto para que sea visible sobre el fondo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Añadimos sombra al texto para mayor visibilidad */
+}
+
+.gallery-image {
+    width: 100%; /* Para asegurarse de que la imagen ocupe todo el ancho del contenedor */
+    height: 250px; /* Altura fija para todas las imágenes */
+    object-fit: cover; /* Asegura que la imagen se recorte para llenar el contenedor, manteniendo su proporción */
+    border: 2px solid #ddd;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
