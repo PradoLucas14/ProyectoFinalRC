@@ -19,7 +19,9 @@ const handleSubmit = (event) => {
     emailjs.sendForm (serviceId, templateId, refForm.current, apikey).then(result => console.log(result.text)).catch( error => console.log(error))
 }
   return (
+    
     <div className='section-form'>
+    <div className="overlayAboutAndinos">
     <form ref={refForm} action='' onSubmit={handleSubmit}>
       <div className="header-contact">
         <h2>Contactanos</h2>
@@ -31,11 +33,16 @@ const handleSubmit = (event) => {
       </fieldset>
       <fieldset className='field-email'>
         <label className='symbol-required' htmlFor="" name="Email">Correo electronico:</label>
-
+        <input type="email" name="" id="email" placeholder='andinos@gmail.com'/>
+      </fieldset>
+      <fieldset className='field-message'>
+        <label className='symbol-required' htmlFor="">Consulta</label>
+        <textarea  maxLength="500" name="message" id="" placeholder='ingresa tu consulta' cols="25" rows="15" ></textarea>
       </fieldset>
       <button className='btn-send'>Enviar</button>
     </form>
     </div>
+   </div>
   )
 }
 
