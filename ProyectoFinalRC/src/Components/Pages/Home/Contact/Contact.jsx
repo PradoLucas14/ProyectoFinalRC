@@ -37,7 +37,7 @@ const handleSubmit = (event) => {
       </fieldset>
       <fieldset className='field-message'>
         <label className='symbol-required' htmlFor="">Consulta</label>
-        <textarea  maxLength="500" name="message" id="" placeholder='ingresa tu consulta' cols="25" rows="15" ></textarea>
+        <textarea  maxLength="500" name="message" id="" placeholder='ingresa tu consulta' cols="30" rows="10" ></textarea>
       </fieldset>
       <button className='btn-send'>Enviar</button>
     </form>
