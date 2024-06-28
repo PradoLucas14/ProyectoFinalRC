@@ -44,8 +44,8 @@ const AppNavbar = () => {
             <div className='mx-auto'></div>
             <Nav className="list">
                 <Nav.Link as={Link} to="/HomePage" className="nav-link">Inicio</Nav.Link>
-                <Nav.Link href="#" className="nav-link">Galería</Nav.Link>
-                <Nav.Link href="#" className="nav-link">Contacto</Nav.Link>
+                <Nav.Link as={Link} to="/ImgGalery" className="nav-link">Galería</Nav.Link>
+                <Nav.Link as={Link} to="/Contact"  className="nav-link">Contacto</Nav.Link>
                 
                 {isLoggedIn && (
                 <React.Fragment>
