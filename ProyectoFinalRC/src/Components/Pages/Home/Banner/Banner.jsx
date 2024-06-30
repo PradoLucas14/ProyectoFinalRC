@@ -15,7 +15,7 @@ function Banner() {
                 <p className="lead">
                     "La Esencia de los nuestro pais en Tu Mesa: Reserva Fácilmente con Andinos y Déjate Sorprender por Nuestros Sabores"
                 </p>
-                <Link to="/registro" className="btn btn-warning custom-btn mt-3">Regístrate</Link>
+                <Link to="/registro" className="btn btn-warning custom-btn mt-3">Reservar mesa</Link>
                 </div>
             </Col>
             <Col md={6} className="d-none d-md-block"></Col>
