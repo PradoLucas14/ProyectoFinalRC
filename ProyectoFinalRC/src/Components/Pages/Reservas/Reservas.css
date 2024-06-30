@@ -1,5 +1,20 @@
 .reservas{
     width: 100vw;
     height: 100vh;
-    background-color: darkkhaki;
+    background-image: url("../../../assets/Img/Reserve/reserve.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: aliceblue;
+}
+.container-form-reservas{
+    width: 100%;
+    max-width: 800px; /* Ancho máximo aumentado para pantallas de escritorio */
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 3px solid orangered;
+    border-radius: 15px 0px;
 }

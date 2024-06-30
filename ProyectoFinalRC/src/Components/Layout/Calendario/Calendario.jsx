@@ -8,15 +8,14 @@ const CalendarPicker = () => {
   const handleDateChange = date => {
     setSelectedDate(date);
     // Verificar si la fecha seleccionada es domingo
-    if (date.getDay() === 0) {
-      alert('¡No puedes seleccionar un domingo!');
+    if (date.getDay() === 1) {
+      alert('¡Nuestro restaurante abre de martes a domingos!');
       setSelectedDate(null); // Limpiar la selección si es domingo
     }
   };
 
   return (
     <div>
-      <h2>Selecciona una fecha:</h2>
       <DatePicker
         selected={selectedDate}
         onChange={handleDateChange}
