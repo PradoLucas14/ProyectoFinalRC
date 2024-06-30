@@ -10,7 +10,7 @@
     flex-direction: column;
     color: aliceblue;
 }
-.container-form-reservas{
+.containerFormReservas{
     width: 100%;
     max-width: 800px; /* Ancho máximo aumentado para pantallas de escritorio */
     padding: 20px;

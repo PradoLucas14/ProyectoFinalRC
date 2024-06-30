@@ -15,7 +15,7 @@ const CalendarPicker = () => {
   };
 
   return (
-    <div>
+    <div className='calendario-form'>
       <DatePicker
         selected={selectedDate}
         onChange={handleDateChange}
