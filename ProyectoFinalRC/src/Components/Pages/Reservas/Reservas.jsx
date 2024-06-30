@@ -1,37 +1,25 @@
 import React from 'react'
 import "./Reservas.css"
-import Calendario from '../../Layout/Calendario/Calendario'
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 const Reservas = () => {
     const {register,handleSubmit}=useForm()
 
-    function obtenerFechaActual() {
-        const fechaActual = new Date();
-        // const dia = fechaActual.getDate();
-        // const mes = fechaActual.getMonth() + 1;
-        // const año = fechaActual.getFullYear();
-      
-        // const fechaFormateada = `${dia}/${mes}/${año}`;
-      
-        return fechaActual;
-      }
-    const initialFormData = {
-        name: '',
-        email: '',
-        telephone: '',
-        date:null
-      };
-      const [selectedDate, setSelectedDate] = useState('');
-      const handleDataChange=date=>{
-          setSelectedDate(date);
-          //aqui verifico que no sea lunes ya que los lunes lo abrimos
-          if(date.getDay()===1){
-              alert('¡Solo abrimos de martes a domingos!')
-              setSelectedDate(null)
-            }
+      const [selectedDate, setSelectedDate] = useState();
+      const handleDataChange = event => {
+        setSelectedDate(event.target.value);
+        console.log(event.target.value)
+        const fecha=new Date(event.target.value)
+        console.log(fecha)
+        console.log(fecha.getDay())
+
+        // Verifica si la fecha seleccionada es domingo
+        if (fecha.getDay() === 0) {
+            alert('¡Nuestro restaurante abre de martes a domingos!');
+            setSelectedDate(null); // Limpia la selección si es domingo
         }
+    };
         
         
        
@@ -53,6 +41,7 @@ const Reservas = () => {
                         type="text"
                         name="name"
                         placeholder="Ingresa un nombre"{...register('name')}
+                        required
                         />
                     </Form.Group>
                     <Form.Group>
@@ -60,6 +49,9 @@ const Reservas = () => {
                         <Form.Control
                             type="text"
                             placeholder="Cantidad de invitados"{...register('participantes')}
+                            required
+                            min={1}
+                            max={15}
                         />
                     </Form.Group>
                     
@@ -70,20 +62,25 @@ const Reservas = () => {
                         <Form.Control
                             type="tel"
                             placeholder="Numero de contacto"{...register('telefono')}
+                            required
                         />
                     </Form.Group>
                     <Form.Group>
                         <Form.Label>Elije una fecha:</Form.Label>
                         <Form.Control 
                             type='date'
-                            onChange={handleDataChange}
                             value={selectedDate}
-                            placeholder='Selecciona una fecha'{...register('date')}
+                            onChange={handleDataChange}
+                            
+                            placeholder='Selecciona una fecha'
+                            {...register('date',{onChange:e=>handleDataChange(e)})}
+                            
+                            required
                         />
                     </Form.Group>
                     </Col>
                 </Row>
-                <Button variant="primary">Primary</Button>
+                <Button variant="primary" type='submit'>Primary</Button>
             </Form>
         </Container>
     </div>
