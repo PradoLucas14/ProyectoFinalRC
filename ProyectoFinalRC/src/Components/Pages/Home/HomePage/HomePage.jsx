@@ -4,29 +4,26 @@ import "./HomePage.css"
 import About from '../About/About'
 import Services from '../ServicesAndinos/Services'
 import Products from "../Products/Products"
-import Contact from '../Contact/Contact'
-
 
 function HomePage() {
   return (
-    <div className='HomePage'>
+    <div className='HomePage' id='top'>
       <div className="Banner">
-        <Banner/> 
+        <Upload/>
+        <Banner />
+        {/* Botón para redirigir a la página de registro */}
       </div>
       <div className="About">
-        <About/>
+        <About />
       </div>
       <div className="Services">
-        <Services/>
-      </div>
-      <div className='Products'>
-        <Products/>
+        <Services />
       </div>
       <div className='Contact'>
       <Contact/>
       </div>
     </div>
-  )
+  );
 }
 
-export default HomePage
+export default HomePage;
