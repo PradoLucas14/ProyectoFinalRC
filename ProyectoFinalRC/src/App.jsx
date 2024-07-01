@@ -9,6 +9,7 @@ import RegisterUser from './Components/Pages/RegisterUser/RegisterUser';
 import Gallery from './Components/Pages/ImgGalery/ImgGalery';
 import Error404 from './Components/Pages/Error404/Error404';
 import Login from './Components/Pages/Login/Login';
+import Reservas from './Components/Pages/Reservas/Reservas';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/Contact" element={<Contact />} />
           <Route path="/ImgGalery" element={<Gallery />} />
           <Route path="*" element={<Error404 />} /> {/* Ruta para manejar cualquier otra ruta */}
+          <Route path='/reserve' element={<Reservas/>}/>
         </Routes>
         <Footer />
       </div>
