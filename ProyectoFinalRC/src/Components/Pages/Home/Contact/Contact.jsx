@@ -21,9 +21,9 @@ const handleSubmit = (event) => {
     emailjs.sendForm (serviceId, templateId, refForm.current, apikey).then(result => console.log(result.text)).then(result => refForm.current.reset()).catch( error => console.log(error))
 }
   return (
-    
+    <div className="contact-form-container">
     <div className='section-form'>
-    <div className="overlayAboutAndinos">
+    
     <form ref={refForm} action='' onSubmit={handleSubmit}>
       <div className="header-contact">
         <h2>Contactanos</h2>
@@ -47,7 +47,9 @@ const handleSubmit = (event) => {
       </div>
     </form>
     </div>
-   </div>
+    </div>
+    
+  
   )
 }
 
