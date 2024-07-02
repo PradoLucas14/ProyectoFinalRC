@@ -3,13 +3,13 @@ import "./Reservas.css"
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Form, Button, Container, Row, Col ,Modal , } from 'react-bootstrap';
-
+import { useNavigate } from 'react-router-dom';
 
 
 const Reservas = () => {
     const {register,handleSubmit,formState: { errors }}=useForm({mode: 'onBlur'})
     const [show, setShow] = useState(false);
-
+    const navigate = useNavigate();
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
       const [selectedDate, setSelectedDate] = useState('');
@@ -253,11 +253,12 @@ const Reservas = () => {
         </Container>
         <Modal show={show} onHide={handleClose} animation={false}>
                 <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Reserva tomada con ÉXITO</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                 {responseData ? (
                         <>
+                            <h2>Detalles de la reserva</h2>
                             <p><strong>Nombre:</strong> {responseData.name}</p>
                             <p><strong>Teléfono:</strong> {responseData.telephone}</p>
                             <p><strong>Participantes:</strong> {responseData.participants}</p>
@@ -271,7 +272,7 @@ const Reservas = () => {
                 </Modal.Body>
                  <Modal.Footer>
                     
-                    <Button variant="primary" onClick={handleClose}>
+                    <Button variant="primary" onClick={()=>{handleClose;navigate('/')}} >
                     Cerrar
                 </Button>
                 </Modal.Footer>
