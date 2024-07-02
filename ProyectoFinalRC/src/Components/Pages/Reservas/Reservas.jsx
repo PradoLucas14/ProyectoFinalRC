@@ -11,7 +11,6 @@ const Reservas = () => {
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
     const [showModalTerminos, setShowModalTerminos] = useState(false);
-    const handleCloseModalTerminos = () => setShowModalTerminos(false);
     const handleShowModalTerminos = () => setShowModalTerminos(true);
 
     const handleClose = () => setShow(false);
