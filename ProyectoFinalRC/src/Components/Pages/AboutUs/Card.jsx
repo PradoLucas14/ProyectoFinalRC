@@ -9,16 +9,15 @@ const Card = () => {
         <img src="" alt="Profile" />
       </div>
       <div className="text-content">
-        <h2>Nosotros</h2>
+        <h2></h2>
         <p>
-          Somos un equipo apasionado comprometido con la excelencia y la innovación.
-          Nuestra misión es [...]
+          
         </p>
         <p>
-          En nuestra página, encontrarás [...]
+          
         </p>
         <p>
-          ¡Únete a nosotros en nuestro viaje para [...]
+          
         </p>
       </div>
     </div>
