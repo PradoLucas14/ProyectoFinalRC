@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './About.css';
 import img1 from "../../../../assets/Img/ImgHome/Img-About-2.jpg";
 
@@ -28,7 +29,7 @@ function About() {
                 <p>Te esperamos todos los días de 9:00 a 23:00</p>
               </div>
               <div className="btnContainer">
-                <Button variant="warning" className='btnCustom'>Ver más</Button>
+              <Link to="/Aboutteam" className="btn btn-warning custom-btn mt-3">Ver mas</Link>
               </div>
             </Col>
           </Row>
