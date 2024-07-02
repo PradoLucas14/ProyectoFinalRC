@@ -2,15 +2,18 @@ import React from 'react'
 import "./Reservas.css"
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
-import { Form, Button, Container, Row, Col } from 'react-bootstrap';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import { Form, Button, Container, Row, Col ,Modal , } from 'react-bootstrap';
+
+
 
 const Reservas = () => {
     const {register,handleSubmit,formState: { errors }}=useForm({mode: 'onBlur'})
+    const [show, setShow] = useState(false);
 
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
       const [selectedDate, setSelectedDate] = useState('');
-      const [horariosDisponibles,setHorariosDisponibles]=useState([])
+      const [responseData,setResponseData]=useState(null)
       const handleTimeChange = event => {
         const selectedTime = event.target.value;
         const selectedHour = parseInt(selectedTime.split(':')[0], 10);
@@ -38,7 +41,7 @@ const Reservas = () => {
         
        
         const reserva=async (data)=>{
-            let options=[]
+            // let options=[]
             //const fecha=new Date(data.date)
             //console.log(fecha)
             //aqui se hace el submit y deberia buscar en la base de datos los que coincidan de fecha
@@ -53,24 +56,50 @@ const Reservas = () => {
             //opcion 5 23 a 01hs
             //para no hacernos mas problemas usaremos el segundo caso
             //primero si esta todo correcto y le da al submit que aparezca la tabla 
-            console.log(data)
-            const fecha=data.date
-            console.log(fecha)
-            //aqui consultamos los horarios que ya hayan sido tomados en esas fechas,osea las opciones tomadas
+             console.log(data)
+            // const fecha=data.date
+            // console.log(fecha)
+            // //aqui consultamos los horarios que ya hayan sido tomados en esas fechas,osea las opciones tomadas
+            // try {
+            //     const response=await fetch("http://localhost:3000/reservas")
+            //     const datos=await response.json()
+            //     console.log(datos)
+            //     datos.forEach(element => {
+            //     if(element.date===fecha){
+            //         options.push(element.option)
+            //     }
+            // });
+            // const disponibles=todasLasOpciones.filter(opcion=>!options.includes(opcion))
+            // setHorariosDisponibles(disponibles)
+            // console.log(disponibles)
+            // } catch (error) {
+            //     alert('Error:',error)
+            // }
+
+            //agregamos reserva
             try {
-                const response=await fetch("http://localhost:3000/reservas")
-                const datos=await response.json()
-                console.log(datos)
-                datos.forEach(element => {
-                if(element.date===fecha){
-                    options.push(element.option)
-                }
-            });
-            const disponibles=todasLasOpciones.filter(opcion=>!options.includes(opcion))
-            setHorariosDisponibles(disponibles)
-            console.log(disponibles)
+                const response=await fetch("http://localhost:3000/reservas",{
+                    method:'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body:JSON.stringify({
+                        "name":data.name,
+                        "telephone":data.telefono,
+                        "participants":data.participantes,
+                        "email":data.email,
+                        "date":data.date,
+                        "hora":data.time
+                    })
+                })
+                const respuestaDB=await response.json()
+                console.log(respuestaDB);
+                //si todo va bien hasta aquí muestro un modal con los detalles
+                setResponseData(respuestaDB)
+                handleShow();
+            
             } catch (error) {
-                alert('Error:',error)
+                console.log(error)
             }
         }
   return (
@@ -195,7 +224,10 @@ const Reservas = () => {
                                         onChange={handleTimeChange}
                                         min="15:00"
                                         max="23:00"
-                                        step="3600"
+                                        step="60"
+                                        {...register('time',{
+                                            required:true
+                                        })}
                                     />
                             </Form.Group>
                         </Col>
@@ -219,6 +251,31 @@ const Reservas = () => {
                        
             </Form>
         </Container>
+        <Modal show={show} onHide={handleClose} animation={false}>
+                <Modal.Header closeButton>
+                <Modal.Title>Modal heading</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                {responseData ? (
+                        <>
+                            <p><strong>Nombre:</strong> {responseData.name}</p>
+                            <p><strong>Teléfono:</strong> {responseData.telephone}</p>
+                            <p><strong>Participantes:</strong> {responseData.participants}</p>
+                            <p><strong>Email:</strong> {responseData.email}</p>
+                            <p><strong>Fecha:</strong> {responseData.date}</p>
+                            <p><strong>Hora:</strong> {responseData.hora}</p>
+                        </>
+                    ) : (
+                        <p>Cargando...</p>
+                    )}
+                </Modal.Body>
+                 <Modal.Footer>
+                    
+                    <Button variant="primary" onClick={handleClose}>
+                    Cerrar
+                </Button>
+                </Modal.Footer>
+            </Modal>
     </div>
     </>
   )
