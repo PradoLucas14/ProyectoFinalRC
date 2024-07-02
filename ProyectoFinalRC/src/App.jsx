@@ -5,6 +5,7 @@ import HomePage from './Components/Pages/Home/HomePage/HomePage';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import Footer from './Components/Layout/Footer/Footer';
 import Contact from "./Components/Pages/Contact/Contact";
+import Admin from './Components/Pages/Admin/Admin';
 import RegisterUser from './Components/Pages/RegisterUser/RegisterUser';
 import Gallery from './Components/Pages/ImgGalery/ImgGalery';
 import Error404 from './Components/Pages/Error404/Error404';
@@ -22,6 +23,7 @@ function App() {
           <Route path="/Login" element={<Login />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/ImgGalery" element={<Gallery />} />
+          <Route path="/Admin" element={<Admin />} />
           <Route path="*" element={<Error404 />} /> {/* Ruta para manejar cualquier otra ruta */}
         </Routes>
         <Footer />

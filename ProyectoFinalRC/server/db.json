@@ -39,14 +39,6 @@
   ],
   "usuarios": [
     {
-      "name": "PradoLucas714",
-      "email": "lukasnahuelprado32@gmail.com",
-      "password": "AaNl0019",
-      "role": "administrador",
-      "status": "activo",
-      "id": 1
-    },
-    {
       "username": "LucasPrado",
       "email": "lukasnahuelprado@gmail.com",
       "password": "AaNl0019",
@@ -57,12 +49,45 @@
     },
     {
       "username": "lukasnahuelprado32@gmail.com ",
-      "email": "lukasnahuelprado32@gmail.com",
+      "email": "lukasnahuelprado02@gmail.com",
       "password": "aaaabbb",
       "termsAccepted": true,
       "role": "cliente",
-      "accountActive": true,
+      "accountActive": false,
       "id": 3
+    },
+    {
+      "username": "usuario1",
+      "email": "lukasnahuelprado@gmail.com",
+      "password": "0123456",
+      "role": "administrador",
+      "accountActive": true,
+      "id": 5
+    },
+    {
+      "username": "Prado Lucas",
+      "email": "lukasnahuelprado32@gmail.com",
+      "password": "qqqqqqqqqq",
+      "role": "cliente",
+      "accountActive": true,
+      "id": 6
+    },
+    {
+      "username": "usuario1",
+      "email": "lukasnahuelprado32@gmail.com",
+      "password": "qqqqqqqqq",
+      "role": "administrador",
+      "accountActive": false,
+      "id": 7
+    }
+  ],
+  "reservas": [
+    {
+      "id": 1,
+      "username": "LucasPrado",
+      "dia": "2024-07-01",
+      "hora": "19:00",
+      "comensales": 4
     }
   ]
 }
