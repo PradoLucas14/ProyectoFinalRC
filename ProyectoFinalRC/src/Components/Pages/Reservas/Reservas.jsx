@@ -3,10 +3,22 @@ import "./Reservas.css"
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
+import Dropdown from 'react-bootstrap/Dropdown';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+
 const Reservas = () => {
     const {register,handleSubmit,formState: { errors }}=useForm({mode: 'onBlur'})
 
       const [selectedDate, setSelectedDate] = useState('');
+      const [horariosDisponibles,setHorariosDisponibles]=useState([])
+      const handleTimeChange = event => {
+        const selectedTime = event.target.value;
+        const selectedHour = parseInt(selectedTime.split(':')[0], 10);
+        if (selectedHour < 15 || selectedHour > 23) {
+            alert('No recibimos reservas en ese horario. Por favor, elige entre las 15:00 y las 23:00.');
+            event.target.value = '';
+        }
+    };
       const handleDataChange = event => {
         
         console.log(event.target.value)
@@ -25,9 +37,10 @@ const Reservas = () => {
         
         
        
-        const reserva=(data)=>{
-            const fecha=new Date(data.date)
-            console.log(fecha)
+        const reserva=async (data)=>{
+            let options=[]
+            //const fecha=new Date(data.date)
+            //console.log(fecha)
             //aqui se hace el submit y deberia buscar en la base de datos los que coincidan de fecha
             //usamos fecha para buscar por ese parámetro
             //entonces primero buscamos en base de datos
@@ -41,6 +54,24 @@ const Reservas = () => {
             //para no hacernos mas problemas usaremos el segundo caso
             //primero si esta todo correcto y le da al submit que aparezca la tabla 
             console.log(data)
+            const fecha=data.date
+            console.log(fecha)
+            //aqui consultamos los horarios que ya hayan sido tomados en esas fechas,osea las opciones tomadas
+            try {
+                const response=await fetch("http://localhost:3000/reservas")
+                const datos=await response.json()
+                console.log(datos)
+                datos.forEach(element => {
+                if(element.date===fecha){
+                    options.push(element.option)
+                }
+            });
+            const disponibles=todasLasOpciones.filter(opcion=>!options.includes(opcion))
+            setHorariosDisponibles(disponibles)
+            console.log(disponibles)
+            } catch (error) {
+                alert('Error:',error)
+            }
         }
   return (
     <>
@@ -48,7 +79,7 @@ const Reservas = () => {
         <Container className='containerFormReservas'>
             <h3>Reserva y disfruta de nuestras mejores comidas</h3>
             <Form onSubmit={handleSubmit(reserva)}>
-            <Row>
+                <Row>
                         <Col md={6}>
                             <Form.Group>
                                 <Form.Label>Ingrese nombre de titular:</Form.Label>
@@ -95,6 +126,28 @@ const Reservas = () => {
                                 />
                                 {errors.participantes && <span className="error">{errors.participantes.message}</span>}
                             </Form.Group>
+                            
+                            <Form.Group>
+                                <Form.Label>Ingrese correo:</Form.Label>
+                                <Form.Control
+                                    type="email"
+                                    name="email"
+                                    placeholder="Ingresa un correo electrónico"
+                                    {...register('email', {
+                                        required: TextTrackCueList,
+                                        minLength: {
+                                            value: 5,
+                                            message: 'El email debe tener al menos 2 caracteres'
+                                        },
+                                        maxLength: {
+                                            value: 30,
+                                            message: 'El email no debe exceder los 30 caracteres'
+                                        }
+                                    })}
+                                    className={errors.name ? 'error-input' : ''}
+                                />
+                                {errors.name && <span className="error">{errors.name.message}</span>}
+                            </Form.Group>
                         </Col>
                         <Col md={6}>
                             <Form.Group>
@@ -121,6 +174,7 @@ const Reservas = () => {
                                 />
                                 {errors.telefono && <span className="error">{errors.telefono.message}</span>}
                             </Form.Group>
+
                             <Form.Group>
                                 <Form.Label>Elije una fecha:</Form.Label>
                                 <Form.Control
@@ -134,9 +188,35 @@ const Reservas = () => {
                                 />
                                 {errors.date && <span className="error">{errors.date.message}</span>}
                             </Form.Group>
+                            <Form.Group>
+                    <Form.Label>Elije una horario aproximado de llegada:</Form.Label>
+                                    <Form.Control
+                                        type='time'
+                                        onChange={handleTimeChange}
+                                        min="15:00"
+                                        max="23:00"
+                                        step="3600"
+                                    />
+                            </Form.Group>
                         </Col>
-                    </Row>
-                <Button variant="primary" type='submit' className='my-2'>Primary</Button>
+                </Row>
+                <Row>
+                    <Col md={12}>
+                        <Form.Check
+                            type="checkbox"
+                            label={
+                                <>
+                                    Acepto los{' '}
+                                    <a href="/ruta-a-términos-y-condiciones">Términos y Condiciones</a>
+                                </>
+                            }
+                            required
+                            />
+                    </Col>
+                        </Row>
+                        {errors.acceptTerms && <span className="error">Debes aceptar los términos y condiciones para continuar.</span>}
+                        <Button variant="primary" type='submit' className='my-2 mx-auto'>Reservar</Button>
+                       
             </Form>
         </Container>
     </div>

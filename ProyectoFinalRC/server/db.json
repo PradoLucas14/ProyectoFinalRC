@@ -64,5 +64,34 @@
       "accountActive": true,
       "id": 3
     }
+  ],
+  "reservas":[{
+        "name":"Matias Perez",
+        "telephone":"3815659113",
+        "participants":5,
+        "date":"2024-07-05",
+        "option":1
+        },
+        {
+          "name":"Matias Peweeez",
+          "telephone":"3815659113",
+          "participants":5,
+          "date":"2024-07-10",
+          "option":2
+          },
+          {
+            "name":"Matiqwwdez",
+            "telephone":"3815659113",
+            "participants":5,
+            "date":"2024-07-05",
+            "option":5
+            },
+            {
+              "name":"Matiqwdwd",
+              "telephone":"3815659113",
+              "participants":5,
+              "date":"2024-07-05",
+              "option":3
+              }
   ]
 }
