@@ -26,9 +26,6 @@ function HomePage() {
       <div>
       <Productos />
       </div>
-      <div className='Contact'>
-      <Contact/>
-      </div>
     </div>
   );
 }
