@@ -63,6 +63,15 @@
       "role": "cliente",
       "accountActive": true,
       "id": "3"
+    },
+    {
+      "id": "b711",
+      "username": "MatiasPerez00",
+      "email": "matiasperez.personal@gmail.com",
+      "password": "Matias41@!",
+      "termsAccepted": true,
+      "role": "cliente",
+      "accountActive": true
     }
   ],
   "reservas": [

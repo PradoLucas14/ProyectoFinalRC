@@ -4,12 +4,16 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { Form, Button, Container, Row, Col ,Modal , } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-
+import TerminosCondiciones from '../../Layout/TerminosCondiciones/TerminosCondiciones';
 
 const Reservas = () => {
     const {register,handleSubmit,formState: { errors }}=useForm({mode: 'onBlur'})
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
+    const [showModalTerminos, setShowModalTerminos] = useState(false);
+    const handleCloseModalTerminos = () => setShowModalTerminos(false);
+    const handleShowModalTerminos = () => setShowModalTerminos(true);
+
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
       const [selectedDate, setSelectedDate] = useState('');
@@ -239,7 +243,11 @@ const Reservas = () => {
                             label={
                                 <>
                                     Acepto los{' '}
-                                    <a href="/ruta-a-términos-y-condiciones">Términos y Condiciones</a>
+                                    <a
+                                    href='#'
+                                    onClick={handleShowModalTerminos}
+
+                                    >Términos y Condiciones</a>
                                 </>
                             }
                             required
@@ -277,7 +285,7 @@ const Reservas = () => {
                 </Button>
                 </Modal.Footer>
             </Modal>
-    </div>
+            {showModalTerminos && <TerminosCondiciones onClose={() => setShowModalTerminos(false)} />}    </div>
     </>
   )
 }
