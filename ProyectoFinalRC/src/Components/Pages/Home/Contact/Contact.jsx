@@ -35,7 +35,7 @@ const handleSubmit = (event) => {
       </fieldset>
       <fieldset className='field-email'>
         <label className='symbol-required' htmlFor="" name="Email">Correo electronico:</label>
-        <input type="email" name="" id="email" placeholder='andinos@gmail.com' required/>
+        <input type="email" name="email" id="email" placeholder='andinos@gmail.com' required/>
       </fieldset>
       <fieldset className='field-message'>
         <label className='symbol-required' htmlFor="">Consulta</label>
