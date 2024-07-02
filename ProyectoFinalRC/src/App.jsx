@@ -10,6 +10,7 @@ import Gallery from './Components/Pages/ImgGalery/ImgGalery';
 import Error404 from './Components/Pages/Error404/Error404';
 import Login from './Components/Pages/Login/Login';
 import Reservas from './Components/Pages/Reservas/Reservas';
+import AboutUs from './Components/Pages/AboutUs/AboutUs';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/ImgGalery" element={<Gallery />} />
           <Route path="*" element={<Error404 />} /> {/* Ruta para manejar cualquier otra ruta */}
           <Route path='/reserve' element={<Reservas/>}/>
+          <Route path='/AboutUs' element={<AboutUs/>}/>
         </Routes>
         <Footer />
       </div>

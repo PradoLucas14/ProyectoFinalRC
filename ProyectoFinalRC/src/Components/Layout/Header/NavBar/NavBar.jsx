@@ -46,7 +46,7 @@ const AppNavbar = () => {
                 <Nav.Link as={Link} to="/HomePage" className="nav-link">Inicio</Nav.Link>
                 <Nav.Link as={Link} to="/ImgGalery" className="nav-link">Galería</Nav.Link>
                 <Nav.Link as={Link} to="/Contact"  className="nav-link">Contacto</Nav.Link>
-                
+                <Nav.Link as={Link} to="/AboutUs"  className="nav-link">Acerca de</Nav.Link>
                 {isLoggedIn && (
                 <React.Fragment>
                     {userRole === 'cliente' && (
