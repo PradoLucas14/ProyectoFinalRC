@@ -13,7 +13,9 @@ const AboutUsBanner = () => {
           <Col md={12} className="text-center d-flex flex-column justify-content-center">
               <div className="container1 p-1 ">
               <h1 className="display-4">ACERCA DE NOSOTROS</h1>
-              
+              <p className="lead">
+                    Nos presentamos por si desean conocer acerca de nosotros
+                </p>
               
               </div>
           </Col>
