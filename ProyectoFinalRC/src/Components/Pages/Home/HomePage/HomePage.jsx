@@ -6,6 +6,9 @@ import Productos from '../Products/Productos';
 import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
 import './HomePage.css';
 import Upload from '../../../Layout/Upload/Upload';
+import "./HomePage.css"
+import Contact from '../Contact/Contact'
+
 
 function HomePage() {
   return (
@@ -22,6 +25,9 @@ function HomePage() {
       </div>
       <div>
       <Productos />
+      </div>
+      <div className='Contact'>
+      <Contact/>
       </div>
     </div>
   );
