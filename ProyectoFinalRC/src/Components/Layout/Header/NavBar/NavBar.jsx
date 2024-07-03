@@ -4,12 +4,20 @@ import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Navbar.css'; // Importa tu archivo de estilos CSS donde defines las clases
 
-const AppNavbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+const AppNavbar = ({user,setUser}) => {
+  const handleLogout=()=>{
+    setUser({
+      name:"",
+    email:"",
+    isLoggedIn:false,
+    role:"",
+    id:""
+    })
+  }
   const [userRole, setUserRole] = useState('cliente');
   const [navbarClass, setNavbarClass] = useState('navbar-transparent');
   const [Collapse , setCollapse] = useState(true)
-
+// console.log(user)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -26,9 +34,6 @@ const AppNavbar = () => {
     };
   }, []);
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
  
   return (
     <Navbar expand="lg" variant="dark" className={`fixed-top navbar-custom ${navbarClass}`}>
@@ -43,26 +48,25 @@ const AppNavbar = () => {
         </Navbar.Toggle>        <Navbar.Collapse id="navbarNav">
             <div className='mx-auto'></div>
             <Nav className="list">
-                <Nav.Link as={Link} to="/HomePage" className="nav-link">Inicio</Nav.Link>
+                <Nav.Link as={Link} to="/" className="nav-link">Inicio</Nav.Link>
                 <Nav.Link as={Link} to="/ImgGalery" className="nav-link">Galería</Nav.Link>
                 <Nav.Link as={Link} to="/Contact"  className="nav-link">Contacto</Nav.Link>
-                <Nav.Link as={Link} to="/Admin" className="nav-link">Admin</Nav.Link>
                 
-                {isLoggedIn && (
+                {user.isLoggedIn && (
                 <React.Fragment>
-                    {userRole === 'cliente' && (
+                    {/* {userRole === 'cliente' && (
                     <Nav.Link href="#" className="nav-link">Reservas</Nav.Link>
-                    )}
+                    )} */}
                     
-                    {userRole === 'admin' && (
-                    <Nav.Link href="#" className="nav-link">Admin</Nav.Link>
+                    {user.role === 'administrador' && (
+                    <Nav.Link href="#" className="nav-link">Administración</Nav.Link>
                     )}
 
                     <Nav.Link href="#" className="nav-link" onClick={handleLogout}>Cerrar Sesión</Nav.Link>
                 </React.Fragment>
                 )}
 
-                {!isLoggedIn && (
+                {!user.isLoggedIn && (
             <Nav.Link as={Link} to="/Login" className="nav-link">Acceso</Nav.Link>
           )}
           </Nav>
