@@ -79,6 +79,15 @@
       "role": "administrador",
       "accountActive": false,
       "id": 7
+    },
+    {
+      "id": "066f",
+      "username": "MatiasPerez00",
+      "email": "matiasperez.personal@gmail.com",
+      "password": "Matias41",
+      "termsAccepted": true,
+      "role": "cliente",
+      "accountActive": true
     }
   ],
   "reservas": [

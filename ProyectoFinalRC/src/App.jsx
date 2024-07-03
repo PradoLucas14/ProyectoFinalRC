@@ -12,6 +12,7 @@ import Error404 from './Components/Pages/Error404/Error404';
 import Login from './Components/Pages/Login/Login';
 import Reservas from './Components/Pages/Reservas/Reservas';
 import AboutTeam from './Components/Pages/About/Aboutteam';
+import PrivateRoute from './PrivateRoute';
 
 function App() {
   const [user,setUser]=useState({
@@ -21,7 +22,6 @@ function App() {
     role:"",
     id:""
   })
-  const [pagBack,setPagBack]=useState('')
 
     //   "username": "LucasPrado",
     //   "email": "lukasnahuelprado@gmail.com",
