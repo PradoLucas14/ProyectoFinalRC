@@ -1,0 +1,90 @@
+.about-us-card {
+  display: flex;
+  align-items: center;
+  background-color: #7a7474;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 90px 250px;
+  height: 250px;
+}
+
+.profile-pic {
+  width: 190px;
+  height: 190px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.profile-pic img {
+  width: 100%;
+  height: auto;
+}
+
+.text-content {
+  flex: 1;
+}
+
+.about-us-card h2 {
+  color: #030303;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.about-us-card h3,
+p,
+a {
+  color: #393737;
+  font-size: 20px;
+  line-height: 1.6;
+  text-decoration: none;
+}
+
+.about-us-card a:hover {
+  color: #030303;
+}
+
+@media (min-width: 0) and (max-width: 768px) {
+  .about-us-card {
+    display: flex;
+    align-items: center;
+    background-color: #7a7474;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 60px;
+    height: 250px;
+  }
+  .profile-pic {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .about-us-card {
+    display: flex;
+    align-items: center;
+    background-color: #7a7474;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 30px;
+    height: 250px;
+  }
+}
+@media (min-width: 992px) {
+  .about-us-card {
+    display: flex;
+    align-items: center;
+    background-color: #7a7474;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 90px 250px;
+    height: 250px;
+  }
+}

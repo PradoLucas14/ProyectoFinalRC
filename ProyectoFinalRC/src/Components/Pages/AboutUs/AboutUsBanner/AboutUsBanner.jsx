@@ -14,7 +14,7 @@ const AboutUsBanner = () => {
               <div className="container1 p-1 ">
               <h1 className="display-4">ACERCA DE NOSOTROS</h1>
               <p className="lead">
-                    Nos presentamos por si desean conocer acerca de nosotros
+                    Aqui pueden conocer mas de nosotros:
                 </p>
               
               </div>
