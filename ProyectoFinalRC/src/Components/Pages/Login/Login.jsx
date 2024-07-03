@@ -4,10 +4,8 @@ import { Form, Button, Container, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom'; // Importa Link y useNavigate
 import './Login.css';
 import { useForm } from 'react-hook-form';
-const LoginPage = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+const LoginPage = ({setUser}) => {
+ 
   const navigate = useNavigate();
   const {register,handleSubmit,formState: { errors }}=useForm({mode: 'onBlur'})
 
@@ -32,16 +30,30 @@ const LoginPage = () => {
     //   "accountActive": true,
     //   "id": 2
     // },
-    const response=await fetch('http://localhost:3000/usuarios')
+    try {
+      const response=await fetch('http://localhost:3000/usuarios')
+      if(response.ok){
+        console.log("me conecte")
+      }
     const usuarios=await response.json()
     console.log(usuarios)
     const id=usuarios.forEach(element => {
       if(element.email===data.email && element.password===data.password){
-        console.log('exito')
+        console.log(element.id)
+        setUser({
+          name:element.username,
+        email:element.email,
+        isLoggedIn:true,
+        role:element.role,
+        id:element.id
+        })
+        navigate('/');
       }
-
     });
-    alert('Usuario no encontrado')
+    
+    } catch (error) {
+      alert(error)
+    }
 
   }
 
@@ -50,7 +62,6 @@ const LoginPage = () => {
       <Container className='loginContainer'>
         <div className="form-wrapper">
           <h2 className="text-center">Iniciar Sesión</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit(loginData)}>
             <Form.Group controlId="formBasicEmail">
             <Form.Label>Ingrese correo:</Form.Label>

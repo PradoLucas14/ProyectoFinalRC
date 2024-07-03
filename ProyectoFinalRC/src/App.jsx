@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './Components/Pages/Home/HomePage/HomePage';
@@ -14,16 +14,33 @@ import Reservas from './Components/Pages/Reservas/Reservas';
 import AboutTeam from './Components/Pages/About/Aboutteam';
 
 function App() {
+  const [user,setUser]=useState({
+    name:"",
+    email:"",
+    isLoggedIn:false,
+    role:"",
+    id:""
+  })
+  const [pagBack,setPagBack]=useState('')
+
+    //   "username": "LucasPrado",
+    //   "email": "lukasnahuelprado@gmail.com",
+    //   "password": "AaNl0019",
+    //   "termsAccepted": true,
+    //   "role": "cliente",
+    //   "accountActive": true,
+    //   "id": 2
+    // },
   return (
     <Router>
+      {console.log(user)}
       <div className="App">
-        <Navbar />
+        <Navbar user={user} setUser={setUser}/>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage user={user} />} />
           <Route path="/registro" element={<RegisterUser />} />
           <Route path="/AboutTeam" element={<AboutTeam />} />
-          <Route path="/HomePage" element={<HomePage />} />
-          <Route path="/Login" element={<Login />} />
+          <Route path="/Login" element={<Login setUser={setUser} />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/ImgGalery" element={<Gallery />} />
           <Route path="/Admin" element={<Admin />} />
