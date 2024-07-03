@@ -43,9 +43,20 @@ function App() {
           <Route path="/Login" element={<Login setUser={setUser} />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/ImgGalery" element={<Gallery />} />
-          <Route path="/Admin" element={<Admin />} />
           <Route path="*" element={<Error404 />} /> {/* Ruta para manejar cualquier otra ruta */}
           <Route path='/reserve' element={<Reservas/>}/>
+          <Route 
+          path='reserve' 
+          element={<PrivateRoute isAllowed={user.isLoggedIn} isAdmin={user.role==="Administrador"}>
+          <Admin/> 
+          </PrivateRoute>}
+          />;
+          <Route 
+          path='Admin' 
+          element={<PrivateRoute isAllowed={user.isLoggedIn} isAdmin={user.role==="administrador"}>
+          <Admin/> 
+          </PrivateRoute>}
+          />;
         </Routes>
         <Footer />
       </div>
