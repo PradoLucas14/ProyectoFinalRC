@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import "./RegisterUser.css"
+import {useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         username: '',
         email: '',
@@ -77,13 +79,14 @@ const RegisterForm = () => {
                 body: JSON.stringify(userData)
             });
 
-            if (response.ok) {
+            if (response.ok) {await 
                 Swal.fire({
                     icon: 'success',
                     title: 'Registro exitoso',
                     text: 'Te has registrado exitosamente',
                 });
                 setFormData({ username: '', email: '', password: '', termsAccepted: false }); // Limpiar el formulario después del registro
+                navigate('/Login')
             } else {
                 Swal.fire({
                     icon: 'error',
