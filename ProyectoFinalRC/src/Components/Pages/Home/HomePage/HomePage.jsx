@@ -3,6 +3,7 @@ import Banner from '../Banner/Banner'; // Importa el componente Banner
 import About from '../About/About';
 import Services from '../ServicesAndinos/Services';
 import Productos from '../Products/Productos';
+import CrudReserv from "../../Admin/CrudReserv"
 import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
 import './HomePage.css';
 import Upload from '../../../Layout/Upload/Upload';
@@ -24,6 +25,9 @@ function HomePage({user}) {
       </div>
       <div>
       <Productos />
+      </div>
+      <div>
+      <CrudReserv />
       </div>
     </div>
   );
