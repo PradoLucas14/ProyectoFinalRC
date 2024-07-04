@@ -90,7 +90,7 @@ const Reservas = ({user}) => {
 
             //agregamos reserva
             try {
-                const response=await fetch("http://localhost:3000/reservas",{
+                const response=await fetch("http://localhost:3001/api/reservas",{
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json'

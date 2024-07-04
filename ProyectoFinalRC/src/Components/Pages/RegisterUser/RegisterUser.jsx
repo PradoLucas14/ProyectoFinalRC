@@ -10,9 +10,9 @@ const RegisterForm = () => {
     password: '',
     termsAccepted: false,
   });
-  const [showVerificationModal, setShowVerificationModal] = useState(false);
-  const [verificationCode, setVerificationCode] = useState('');
-  const [enteredCode, setEnteredCode] = useState('');
+//   const [showVerificationModal, setShowVerificationModal] = useState(false);
+//   const [verificationCode, setVerificationCode] = useState('');
+//   const [enteredCode, setEnteredCode] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -23,6 +23,7 @@ const RegisterForm = () => {
   };
 
   const handleSubmit = async (e) => {
+    
     e.preventDefault();
 
     // Validación de campos obligatorios
@@ -65,86 +66,98 @@ const RegisterForm = () => {
     }
 
     // Enviar código de verificación
-    try {
-      const response = await fetch('http://localhost:3000/send-verification-code', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: formData.email }),
-      });
+//     try {
+//         console.log('entre a la verificacion de codigo')
 
-      if (response.ok) {
-        setShowVerificationModal(true);
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Error al enviar el código de verificación',
-        });
-      }
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Error al enviar el código de verificación',
-      });
-    }
-  };
+//       const response = await fetch('http://localhost:3001/api/send-verification-code', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ email: formData.email }),
+//       });
+//       console.log(response.status)
+//       if (response.ok) {
 
-  const handleVerification = async () => {
-    try {
-      const response = await fetch('http://localhost:3000/verify-code', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: formData.email, code: enteredCode }),
-      });
+//         setShowVerificationModal(true);
+//       } else {
+//         console.log()
+//         Swal.fire({
+//           icon: 'error',
+//           title: 'Error',
+//           text: 'Error al enviar el código de verificación',
+//         });
+//       }
+//     } catch (error) {
+//       Swal.fire({
+//         icon: 'error',
+//         title: 'Error',
+//         text: 'Error al enviar el código de verificación',
+//       });
+//     }
+//   };
 
-      if (response.ok) {
+//   const handleVerification = async () => {
+//     try {
+//         console.log('Ingrese al verify code')
+//       const response = await fetch('http://localhost:3001/api/verify-code', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ email: formData.email, code: enteredCode }),
+//       });
+
+//       if (response.ok) {
         // Registro del usuario
         const userData = { ...formData, role: 'cliente', accountActive: true };
-        const registerResponse = await fetch('http://localhost:3000/register', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(userData),
-        });
-
-        if (registerResponse.ok) {
-          Swal.fire({
-            icon: 'success',
-            title: 'Registro exitoso',
-            text: 'Te has registrado exitosamente',
-          });
-          setFormData({ username: '', email: '', password: '', termsAccepted: false });
-          setShowVerificationModal(false);
-        } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Error en el registro',
-          });
+        console.log(userData)
+        try {
+            const registerResponse = await fetch('http://localhost:3001/api/register', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(userData),
+              });
+      
+              if (registerResponse.ok) {
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Registro exitoso',
+                  text: 'Te has registrado exitosamente',
+                });
+                setFormData({ username: '', email: '', password: '', termsAccepted: false });
+                // setShowVerificationModal(false);
+              } else {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Error',
+                  text: 'Error en el registro',
+                });
+              }
+        } catch (error) {
+            console.log(error)
+            alert('Error con el servidor:',error)
         }
-      } else {
+        
+    //   } else {
 
-        Swal.fire({
-          icon: 'error',
-          title: 'Error',
-          text: 'Código de verificación inválido',
-        });
-      }
-    } catch (error) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        text: 'Error en la verificación',
+    //     Swal.fire({
+    //       icon: 'error',
+    //       title: 'Error',
+    //       text: 'Código de verificación inválido',
+    //     });
+    //   }
+    // } catch (error) {
+    //   Swal.fire({
+    //     icon: 'error',
+    //     title: 'Error',
+    //     text: 'Error en la verificación',
 
         
-      });
-    }
+    //   });
+    // }
   };
 
   const validateUsername = (username) => {
@@ -212,7 +225,7 @@ const RegisterForm = () => {
         </Form>
       </div>
 
-      <Modal show={showVerificationModal} onHide={() => setShowVerificationModal(true)}>
+      {/* <Modal show={showVerificationModal} onHide={() => setShowVerificationModal(true)}>
         <Modal.Header>
           <Modal.Title>Verificación de Correo</Modal.Title>
         </Modal.Header>
@@ -253,7 +266,7 @@ const RegisterForm = () => {
             Verificar
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
     </div>
   );
 };

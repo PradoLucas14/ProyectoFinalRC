@@ -12,6 +12,7 @@ const LoginPage = ({ setUser }) => {
 
   const loginData = async (data) => {
     try {
+      console.log(data)
       const response = await fetch('http://localhost:3001/api/login', {
         method: 'POST',
         headers: {
@@ -19,7 +20,7 @@ const LoginPage = ({ setUser }) => {
         },
         body: JSON.stringify(data),
       });
-
+      console.log('Llegue a la consulta del response :',response.status)
       const loginData = await response.json();
       if (response.status !== 200) {
         enqueueSnackbar(loginData.message, { variant: 'error' });
@@ -62,7 +63,7 @@ const LoginPage = ({ setUser }) => {
                     message: 'El email debe tener al menos 5 caracteres'
                   },
                   maxLength: {
-                    value: 30,
+                    value: 50,
                     message: 'El email no debe exceder los 30 caracteres'
                   }
                 })}
