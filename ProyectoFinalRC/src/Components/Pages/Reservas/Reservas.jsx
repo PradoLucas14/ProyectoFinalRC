@@ -53,44 +53,12 @@ const Reservas = ({user}) => {
         
        
         const reserva=async (data)=>{
-            // let options=[]
-            //const fecha=new Date(data.date)
-            //console.log(fecha)
-            //aqui se hace el submit y deberia buscar en la base de datos los que coincidan de fecha
-            //usamos fecha para buscar por ese parámetro
-            //entonces primero buscamos en base de datos
-            //devolvemos los horarios ya tomados con el mismo dias
-            //recordemos que cada uno cubre dos horas
-            //o bien ofrecer reservas cada dos horas: 15 hasta 17
-            //opcion2 17 a 19
-            //opcion 3 19 a 21
-            //opcion4 21 a 23hs
-            //opcion 5 23 a 01hs
-            //para no hacernos mas problemas usaremos el segundo caso
-            //primero si esta todo correcto y le da al submit que aparezca la tabla 
+          
              console.log(data)
-            // const fecha=data.date
-            // console.log(fecha)
-            // //aqui consultamos los horarios que ya hayan sido tomados en esas fechas,osea las opciones tomadas
-            // try {
-            //     const response=await fetch("http://localhost:3000/reservas")
-            //     const datos=await response.json()
-            //     console.log(datos)
-            //     datos.forEach(element => {
-            //     if(element.date===fecha){
-            //         options.push(element.option)
-            //     }
-            // });
-            // const disponibles=todasLasOpciones.filter(opcion=>!options.includes(opcion))
-            // setHorariosDisponibles(disponibles)
-            // console.log(disponibles)
-            // } catch (error) {
-            //     alert('Error:',error)
-            // }
-
+          
             //agregamos reserva
             try {
-                const response=await fetch("http://localhost:3001/api/reservas",{
+                const response=await fetch("http://localhost:3001/api//reserv/register",{
                     method:'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -112,7 +80,7 @@ const Reservas = ({user}) => {
                 handleShow();
             
             } catch (error) {
-                console.log(error)
+                alert(error)
             }
         }
   return (
