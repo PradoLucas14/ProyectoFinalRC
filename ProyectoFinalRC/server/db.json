@@ -178,9 +178,8 @@
       "participants": "5",
       "email": "matiasperez.personal@gmail.com",
       "date": "2024-07-18",
-      "hora": "21:22"
-      "accountActive": false,
-      "id": 3
+      "hora": "21:22",
+      "accountActive": false
     },
     {
       "username": "usuario1",
@@ -222,7 +221,7 @@
       "accountActive": true
     }
   ],
-  "reservas": [
+  "reservass": [
     {
       "id": 1,
       "username": "LucasPrado",
