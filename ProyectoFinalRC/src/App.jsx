@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './Components/Pages/Home/HomePage/HomePage';
@@ -16,13 +16,27 @@ import PrivateRoute from './PrivateRoute';
 
 function App() {
   const [user,setUser]=useState({
-    name:"",
-    email:"",
-    isLoggedIn:false,
-    role:"",
-    id:""
+    token:null,
+    id:null,
+  email:null,
+  isLoggedIn:false,
+  role:null,
   })
-
+  const checkLogged=()=>{
+    if(isUserLogged){
+      const token=localStorage.getItem('token')
+      const decoded=jwtDecode(token)
+      setUser({
+        token:token,
+          id:decoded.userId,        
+          isLoggedIn:true,
+        role:decoded.userRole,
+      })
+    }
+  }
+  useEffect(()=>{
+    checkLogged()
+  },[])
     //   "username": "LucasPrado",
     //   "email": "lukasnahuelprado@gmail.com",
     //   "password": "AaNl0019",
