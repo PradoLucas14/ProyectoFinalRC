@@ -1,154 +1,108 @@
-// src/Admin.js
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import UserTable from './UserTable';
-import CreateUserModal from './CreateUserModal';
-import EditUserModal from './EditUserModal';
-import Pagination from './Pagination';
 import Swal from 'sweetalert2';
-import './Admin.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Admin = () => {
-  const [users, setUsers] = useState([]);
-  const [currentUser, setCurrentUser] = useState(null);
-  const [showCreateModal, setShowCreateModal] = useState(false);
-  const [showEditModal, setShowEditModal] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage] = useState(10);
+    const [usuarios, setUsuarios] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/usuarios')
-      .then(response => {
-        setUsers(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching users:', error);
-      });
-  }, []);
+    useEffect(() => {
+        const fetchUsuarios = async () => {
+            try {
+                const response = await axios.get('http://localhost:3000/usuarios');
+                setUsuarios(response.data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-  const handleCreateUser = (newUser) => {
-    axios.post('http://localhost:3000/usuarios', newUser)
-      .then(response => {
-        setUsers([...users, response.data]);
-        setShowCreateModal(false);
+        fetchUsuarios();
+    }, []);
+
+    const handleEdit = (id) => {
+        // Lógica para editar un usuario
+        console.log(`Editar usuario con ID: ${id}`);
+    };
+
+    const handleDelete = (id) => {
         Swal.fire({
-          title: 'Éxito!',
-          text: 'Usuario creado correctamente.',
-          icon: 'success',
-          confirmButtonText: 'Ok'
+            title: '¿Estás seguro?',
+            text: "¡No podrás revertir esto!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Lógica para eliminar un usuario
+                console.log(`Eliminar usuario con ID: ${id}`);
+                Swal.fire(
+                    '¡Eliminado!',
+                    'El usuario ha sido eliminado.',
+                    'success'
+                );
+            }
         });
-      })
-      .catch(error => {
-        console.error('Error creating user:', error);
-        Swal.fire({
-          title: 'Error!',
-          text: 'Hubo un problema al crear el usuario.',
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        });
-      });
-  };
+    };
 
-  const handleEditUser = (updatedUser) => {
-    axios.patch(`http://localhost:3000/usuarios/${updatedUser.id}`, updatedUser)
-      .then(response => {
-        setUsers(users.map(user => user.id === updatedUser.id ? response.data : user));
-        setShowEditModal(false);
-        Swal.fire({
-          title: 'Éxito!',
-          text: 'Usuario actualizado correctamente.',
-          icon: 'success',
-          confirmButtonText: 'Ok'
-        });
-      })
-      .catch(error => {
-        console.error('Error editing user:', error);
-        Swal.fire({
-          title: 'Error!',
-          text: 'Hubo un problema al actualizar el usuario.',
-          icon: 'error',
-          confirmButtonText: 'Ok'
-        });
-      });
-  };
+    if (loading) {
+        return <div>Cargando...</div>;
+    }
 
-  const handleDeleteUser = (id) => {
-    Swal.fire({
-      title: '¿Estás seguro?',
-      text: "No podrás deshacer esta acción.",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sí, eliminar!',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/usuarios/${id}`)
-          .then(() => {
-            setUsers(users.filter(user => user.id !== id));
-            Swal.fire(
-              'Eliminado!',
-              'El usuario ha sido eliminado.',
-              'success'
-            );
-          })
-          .catch(error => {
-            console.error('Error deleting user:', error);
-            Swal.fire({
-              title: 'Error!',
-              text: 'Hubo un problema al eliminar el usuario.',
-              icon: 'error',
-              confirmButtonText: 'Ok'
-            });
-          });
-      }
-    });
-  };
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
-  const indexOfLastUser = currentPage * usersPerPage;
-  const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsers = users.slice(indexOfFirstUser, indexOfLastUser);
-  const totalPages = Math.ceil(users.length / usersPerPage);
-
-  return (
-    <div className="admin-container">
-      <h1 className="title">Administrador</h1>
-      <div className="users-header-container">
-        <h2 className="table-title">Usuarios</h2>
-        <button className="btn btn-primary" onClick={() => setShowCreateModal(true)}>
-          Crear Usuario
-        </button>
-      </div>
-      <UserTable 
-        users={currentUsers}
-        onEditUser={(user) => {
-          setCurrentUser(user);
-          setShowEditModal(true);
-        }}
-        onDeleteUser={handleDeleteUser}
-      />
-      <Pagination 
-        currentPage={currentPage}
-        totalPages={totalPages}
-        onPageChange={page => setCurrentPage(page)}
-      />
-      <CreateUserModal 
-        show={showCreateModal}
-        onClose={() => setShowCreateModal(false)}
-        onCreate={handleCreateUser}
-      />
-      {currentUser && (
-        <EditUserModal 
-          user={currentUser}
-          show={showEditModal}
-          onClose={() => setShowEditModal(false)}
-          onEdit={handleEditUser}
-        />
-      )}
-    </div>
-  );
+    return (
+        <div className="container mt-4">
+            <h1>Administrador</h1>
+            <div className="table-responsive">
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre de usuario</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                            <th>Estado de cuenta</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {usuarios.map((usuario) => (
+                            <tr key={usuario.id}>
+                                <td>{usuario.id}</td>
+                                <td>{usuario.username}</td>
+                                <td>{usuario.email}</td>
+                                <td>{usuario.role}</td>
+                                <td>{usuario.accountActive ? 'Activo' : 'Inactivo'}</td>
+                                <td>
+                                    <button
+                                        className="btn btn-primary btn-sm mr-2"
+                                        onClick={() => handleEdit(usuario.id)}
+                                    >
+                                        Editar
+                                    </button>
+                                    <button
+                                        className="btn btn-danger btn-sm"
+                                        onClick={() => handleDelete(usuario.id)}
+                                    >
+                                        Eliminar
+                                    </button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    );
 };
 
 export default Admin;
