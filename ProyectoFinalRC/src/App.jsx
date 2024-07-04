@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import './App.css';
 import HomePage from './Components/Pages/Home/HomePage/HomePage';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';

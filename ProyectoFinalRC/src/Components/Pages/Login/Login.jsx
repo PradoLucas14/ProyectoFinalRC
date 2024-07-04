@@ -1,9 +1,8 @@
-// src/components/pages/LoginPage/LoginPage.jsx
 import React, { useState } from 'react';
 import { Form, Button, Container } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom'; // Importa Link y useNavigate
 import './Login.css';
-import jwtDecode from 'jwt-decode';
+import { jwtDecode } from 'jwt-decode';
 import { useForm } from 'react-hook-form';
 import { enqueueSnackbar } from 'notistack';
 
