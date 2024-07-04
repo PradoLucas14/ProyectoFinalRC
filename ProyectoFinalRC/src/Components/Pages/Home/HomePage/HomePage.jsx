@@ -26,9 +26,6 @@ function HomePage({user}) {
       <div>
       <Productos />
       </div>
-      <div>
-      <CrudReserv />
-      </div>
     </div>
   );
 }
