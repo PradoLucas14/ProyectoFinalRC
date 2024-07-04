@@ -3,53 +3,43 @@ import React, { useState } from 'react';
 import { Form, Button, Container, Alert } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom'; // Importa Link y useNavigate
 import './Login.css';
+import { jwtDecode } from 'jwt-decode'
 import { useForm } from 'react-hook-form';
+import { enqueueSnackbar } from 'notistack';
 const LoginPage = ({setUser}) => {
  
   const navigate = useNavigate();
   const {register,handleSubmit,formState: { errors }}=useForm({mode: 'onBlur'})
 
-  // const handleLogin = async (e) => {
-  //   e.preventDefault();
-
-  //   // Aquí iría tu lógica de autenticación
-  //   if (email === 'user@example.com' && password === 'password') {
-  //     // Redirigir a la página de inicio o dashboard después del login exitoso
-  //     navigate('/');
-  //   } else {
-  //     setError('Correo electrónico o contraseña incorrectos');
-  //   }
-  // };
   const loginData=async(data)=>{
-    // //{
-    //   "username": "LucasPrado",
-    //   "email": "lukasnahuelprado@gmail.com",
-    //   "password": "AaNl0019",
-    //   "termsAccepted": true,
-    //   "role": "cliente",
-    //   "accountActive": true,
-    //   "id": 2
-    // },
     try {
-      const response=await fetch('http://localhost:3000/usuarios')
-      if(response.ok){
-        console.log("me conecte")
+      const response=await fetch('http://localhost:3001/login',{
+        method:'POST',
+        headers:{
+          'Content-type':'application/json'
+      },
+      body:JSON.stringify(data)
+      })
+      if(response.status!=200){
+
+        const mensaje=await response.json()
+        enqueueSnackbar(mensaje.message,{variant:'error'})
+    }
+      if(response.status===200){
+        const mensaje=await response.json()
+        enqueueSnackbar(mensaje.message,{variant:'succes'})
       }
-    const usuarios=await response.json()
-    console.log(usuarios)
-    const id=usuarios.forEach(element => {
-      if(element.email===data.email && element.password===data.password){
-        console.log(element.id)
+      const loginData=await response.json()
+      const decoded=jwtDecode(loginData.accesToken)
+      localStorage.setItem('isUserLogged',true)
+         localStorage.setItem('token',loginData.accesToken)
         setUser({
-          name:element.username,
-        email:element.email,
+          token:loginData.accesToken,
+          id:decoded.userId,        
         isLoggedIn:true,
-        role:element.role,
-        id:element.id
+        role:decoded.userRole,
         })
         navigate('/');
-      }
-    });
     
     } catch (error) {
       alert(error)
