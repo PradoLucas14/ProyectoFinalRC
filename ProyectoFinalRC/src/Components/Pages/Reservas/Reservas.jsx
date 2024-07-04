@@ -6,7 +6,16 @@ import { Form, Button, Container, Row, Col ,Modal , } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import TerminosCondiciones from '../../Layout/TerminosCondiciones/TerminosCondiciones';
 
-const Reservas = () => {
+const Reservas = ({user}) => {
+    function generateRandomString(length) {
+        let result = '';
+        const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        const charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
     const {register,handleSubmit,formState: { errors }}=useForm({mode: 'onBlur'})
     const [show, setShow] = useState(false);
     const navigate = useNavigate();
@@ -92,7 +101,8 @@ const Reservas = () => {
                         "participants":data.participantes,
                         "email":data.email,
                         "date":data.date,
-                        "hora":data.time
+                        "hora":data.time,
+                        "id":generateRandomString(10)
                     })
                 })
                 const respuestaDB=await response.json()
