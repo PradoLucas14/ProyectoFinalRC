@@ -148,7 +148,7 @@ const RegisterForm = () => {
   };
 
   const validateUsername = (username) => {
-    return username.length > 6;
+    return username.length > 6 && username.length <= 30;
   };
 
   const validatePassword = (password) => {
