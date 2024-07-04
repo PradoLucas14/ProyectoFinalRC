@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./Admin.css"
 
 const Admin = () => {
     const [usuarios, setUsuarios] = useState([]);
@@ -60,11 +60,11 @@ const Admin = () => {
     }
 
     return (
-        <div className="container mt-4">
+       <div className="container mt-4">
             <h1>Administrador</h1>
             <div className="table-responsive">
-                <table className="table table-striped">
-                    <thead>
+                <table className="table table-dark table-striped text-center table-bordered">
+                    <thead className="thead-dark">
                         <tr>
                             <th>ID</th>
                             <th>Nombre de usuario</th>
@@ -84,7 +84,7 @@ const Admin = () => {
                                 <td>{usuario.accountActive ? 'Activo' : 'Inactivo'}</td>
                                 <td>
                                     <button
-                                        className="btn btn-primary btn-sm mr-2"
+                                        className="btn btn-info btn-sm mr-2"
                                         onClick={() => handleEdit(usuario.id)}
                                     >
                                         Editar
@@ -104,5 +104,4 @@ const Admin = () => {
         </div>
     );
 };
-
 export default Admin;
