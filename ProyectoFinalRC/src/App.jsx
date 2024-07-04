@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
 import HomePage from './Components/Pages/Home/HomePage/HomePage';
@@ -16,13 +16,27 @@ import PrivateRoute from './PrivateRoute';
 
 function App() {
   const [user,setUser]=useState({
-    name:"",
-    email:"",
-    isLoggedIn:false,
-    role:"",
-    id:""
+    token:null,
+    id:null,
+  email:null,
+  isLoggedIn:false,
+  role:null,
   })
-
+  const checkLogged=()=>{
+    if(isUserLogged){
+      const token=localStorage.getItem('token')
+      const decoded=jwtDecode(token)
+      setUser({
+        token:token,
+          id:decoded.userId,        
+          isLoggedIn:true,
+        role:decoded.userRole,
+      })
+    }
+  }
+  useEffect(()=>{
+    checkLogged()
+  },[])
     //   "username": "LucasPrado",
     //   "email": "lukasnahuelprado@gmail.com",
     //   "password": "AaNl0019",
@@ -37,6 +51,11 @@ function App() {
       <div className="App">
         <Navbar user={user} setUser={setUser}/>
         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterUser />} />
+          <Route path="/HomePage" element={<HomePage />} />{/*creo qque esta ruta esta de mas porque incio seria '/'*/}
+          <Route path="/Login" element={<Login />} />
+
         <Route path="/" element={<HomePage user={user} />} />
           <Route path="/registro" element={<RegisterUser />} />
           <Route path="/AboutTeam" element={<AboutTeam />} />
