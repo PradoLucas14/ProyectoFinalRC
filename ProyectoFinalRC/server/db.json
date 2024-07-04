@@ -178,9 +178,8 @@
       "participants": "5",
       "email": "matiasperez.personal@gmail.com",
       "date": "2024-07-18",
-      "hora": "21:22"
-      "accountActive": false,
-      "id": 3
+      "hora": "21:22",
+      "accountActive": false
     },
     {
       "username": "usuario1",
@@ -214,24 +213,15 @@
     },
     {
       "id": "b874",
-      "username": "MatiasPerez00",
+      "username": "MatiasPerez0010",
       "email": "Matias@gmail.com",
-      "password": "Matias41@!",
-      "termsAccepted": true,
-      "role": "cliente",
-      "accountActive": true
-    },
-    {
-      "id": "6feb",
-      "username": "MatiasPerez00",
-      "email": "matiasperez.personal@gmail.com",
       "password": "Matias41@!",
       "termsAccepted": true,
       "role": "cliente",
       "accountActive": true
     }
   ],
-  "reservas": [
+  "reservass": [
     {
       "id": 1,
       "username": "LucasPrado",
