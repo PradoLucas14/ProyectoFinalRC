@@ -19,6 +19,7 @@ const Admin = () => {
         const fetchUsuarios = async () => {
             try {
                 const response = await axios.get('http://localhost:3001/api/users');
+                console.log('Usuarios recibidos:', response.data);  // Imprimir datos recibidos
                 setUsuarios(response.data);
             } catch (err) {
                 setError(err.message);
@@ -31,7 +32,6 @@ const Admin = () => {
     }, []);
 
     const handleEdit = (usuario) => {
-        // Mostrar el modal de edición
         setCurrentUser(usuario);
         setUsername(usuario.username);
         setAccountActive(usuario.accountActive);
@@ -39,16 +39,19 @@ const Admin = () => {
     };
 
     const handleSave = async () => {
+        if (!currentUser) {
+            console.error('No hay usuario actual definido para editar.');
+            return;
+        }
+
         try {
-            await axios.put(`http://localhost:3000/usuarios/${currentUser.id}`, {
-                ...currentUser,
+            await axios.patch(`http://localhost:3001/api/users/${currentUser._id}`, {
                 username,
                 accountActive,
             });
 
-            // Actualizar la lista de usuarios
             setUsuarios(usuarios.map(usuario =>
-                usuario.id === currentUser.id
+                usuario._id === currentUser._id
                     ? { ...usuario, username, accountActive }
                     : usuario
             ));
@@ -59,9 +62,9 @@ const Admin = () => {
                 'success'
             );
 
-            // Cerrar el modal
             setShowModal(false);
         } catch (err) {
+            console.error('Error al actualizar el usuario:', err);
             Swal.fire(
                 'Error',
                 'Hubo un problema al actualizar el usuario.',
@@ -71,6 +74,11 @@ const Admin = () => {
     };
 
     const handleDelete = async (id) => {
+        if (!id) {
+            console.error('ID del usuario no está definido para eliminar.');
+            return;
+        }
+
         try {
             const result = await Swal.fire({
                 title: '¿Estás seguro?',
@@ -84,8 +92,8 @@ const Admin = () => {
             });
 
             if (result.isConfirmed) {
-                await axios.delete(`http://localhost:3000/usuarios/${id}`);
-                setUsuarios(usuarios.filter(usuario => usuario.id !== id));
+                await axios.delete(`http://localhost:3001/api/users/${id}`);
+                setUsuarios(usuarios.filter(usuario => usuario._id !== id));
 
                 Swal.fire(
                     '¡Eliminado!',
@@ -94,6 +102,7 @@ const Admin = () => {
                 );
             }
         } catch (err) {
+            console.error('Error al eliminar el usuario:', err);
             Swal.fire(
                 'Error',
                 'Hubo un problema al eliminar el usuario.',
@@ -132,29 +141,35 @@ const Admin = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {usuarios.map((usuario) => (
-                                <tr key={usuario.id}>
-                                    <td>{usuario.id}</td>
-                                    <td>{usuario.username}</td>
-                                    <td>{usuario.email}</td>
-                                    <td>{usuario.role}</td>
-                                    <td>{usuario.accountActive ? 'Activo' : 'Inactivo'}</td>
-                                    <td>
-                                        <button
-                                            className="btn btn-info btn-sm mr-2"
-                                            onClick={() => handleEdit(usuario)}
-                                        >
-                                            Editar
-                                        </button>
-                                        <button
-                                            className="btn btn-danger btn-sm"
-                                            onClick={() => handleDelete(usuario.id)}
-                                        >
-                                            Eliminar
-                                        </button>
-                                    </td>
+                            {usuarios.length > 0 ? (
+                                usuarios.map((usuario) => (
+                                    <tr key={usuario._id}>
+                                        <td>{usuario._id}</td>
+                                        <td>{usuario.username}</td>
+                                        <td>{usuario.email}</td>
+                                        <td>{usuario.role}</td>
+                                        <td>{usuario.accountActive ? 'Activo' : 'Inactivo'}</td>
+                                        <td>
+                                            <button
+                                                className="btn btn-info btn-sm mr-2"
+                                                onClick={() => handleEdit(usuario)}
+                                            >
+                                                Editar
+                                            </button>
+                                            <button
+                                                className="btn btn-danger btn-sm"
+                                                onClick={() => handleDelete(usuario._id)}
+                                            >
+                                                Eliminar
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr>
+                                    <td colSpan="6">No hay usuarios disponibles</td>
                                 </tr>
-                            ))}
+                            )}
                         </tbody>
                     </table>
                 </div>
