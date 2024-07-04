@@ -1,37 +1,37 @@
 {
   "menu": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Hamburguesa",
       "image": "https://w.forfun.com/fetch/7f/7fe483bfb112ec5acd4eb9fd4b93bd19.jpeg",
       "price": 10.99
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Pizza",
       "image": "https://c4.wallpaperflare.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg",
       "price": 12.5
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Tarta de verduras",
       "image": "https://imag.bonviveur.com/quiche-de-verduras-y-queso.jpg",
       "price": 8.75
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Empanadas",
       "image": "https://assets.elgourmet.com/wp-content/uploads/2023/03/cover_47tmx80joc_empandascarnejpg-1024x683.jpg.webp",
       "price": 1.75
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Napolitana",
       "image": "https://33arte.com/pedidos/wp-content/uploads/2024/03/360_F_296966702_hmhZv8ggZZYQb9doi7V9eUAc97nowt4U.jpg",
       "price": 12.5
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Papas fritas",
       "image": "https://s1.1zoom.me/big0/134/French_fries_Fast_food_561492_1280x853.jpg",
       "price": 9.5
@@ -39,13 +39,22 @@
   ],
   "usuarios": [
     {
+      "name": "PradoLucas714",
+      "email": "lukasnahuelprado32@gmail.com",
+      "password": "AaNl0019",
+      "role": "administrador",
+      "status": "activo",
+      "id": "1"
+    },
+    {
+
       "username": "LucasPrado",
       "email": "lukasnahuelprado@gmail.com",
       "password": "AaNl0019",
       "termsAccepted": true,
       "role": "cliente",
       "accountActive": true,
-      "id": 2
+      "id": "2"
     },
     {
       "username": "lukasnahuelprado32@gmail.com ",
@@ -53,6 +62,123 @@
       "password": "aaaabbb",
       "termsAccepted": true,
       "role": "cliente",
+      "accountActive": true,
+      "id": "3"
+    },
+    {
+      "id": "b711",
+      "username": "MatiasPerez00",
+      "email": "matiasperez.personal@gmail.com",
+      "password": "Matias41@!",
+      "termsAccepted": true,
+      "role": "cliente",
+      "accountActive": true
+    }
+  ],
+  "reservas": [
+    {
+      "name": "Matias Perez",
+      "telephone": "3815659113",
+      "participants": 5,
+      "date": "2024-07-05",
+      "option": 1,
+      "id": "c9e6"
+    },
+    {
+      "name": "Matias Peweeez",
+      "telephone": "3815659113",
+      "participants": 5,
+      "date": "2024-07-10",
+      "option": 2,
+      "id": "5ded"
+    },
+    {
+      "name": "Matiqwwdez",
+      "telephone": "3815659113",
+      "participants": 5,
+      "date": "2024-07-05",
+      "option": 5,
+      "id": "d73f"
+    },
+    {
+      "name": "Matiqwdwd",
+      "telephone": "3815659113",
+      "participants": 5,
+      "date": "2024-07-05",
+      "option": 3,
+      "id": "3001"
+    },
+    {
+      "id": "499e",
+      "name": "awdwa",
+      "telephone": "3816040663",
+      "participants": "3",
+      "email": "matiasperez.personal@gmail.com",
+      "date": "2024-07-06",
+      "hora": "16:00"
+    },
+    {
+      "id": "fa6f",
+      "name": "awdwa",
+      "telephone": "3816040663",
+      "participants": "3",
+      "email": "matiasperez.personal@gmail.com",
+      "date": "2024-07-13",
+      "hora": "16:00"
+    },
+    {
+      "id": "47d8",
+      "name": "awdwa",
+      "telephone": "3816040663",
+      "participants": "3",
+      "email": "matiasperez.personal@gmail.com",
+      "date": "2024-07-27",
+      "hora": "15:00"
+    },
+    {
+      "id": "cefa",
+      "name": "matias",
+      "telephone": "3816040663",
+      "participants": "5",
+      "email": "matiasperez.personal@gmail.com",
+      "date": "2024-07-12",
+      "hora": "18:00"
+    },
+    {
+      "id": "d31f",
+      "name": "matias",
+      "telephone": "3816040663",
+      "participants": "5",
+      "email": "matiasperez.personal@gmail.com",
+      "date": "2024-07-24",
+      "hora": "17:00"
+    },
+    {
+      "id": "c844",
+      "name": "matias",
+      "telephone": "3816040663",
+      "participants": "5",
+      "email": "matiasperez.personal@gmail.com",
+      "date": "2024-07-24",
+      "hora": "17:05"
+    },
+    {
+      "id": "1330",
+      "name": "matias",
+      "telephone": "3816040663",
+      "participants": "5",
+      "email": "matiasperez.personal@gmail.com",
+      "date": "2024-07-11",
+      "hora": "16:00"
+    },
+    {
+      "id": "d442",
+      "name": "matias",
+      "telephone": "3816040663",
+      "participants": "5",
+      "email": "matiasperez.personal@gmail.com",
+      "date": "2024-07-18",
+      "hora": "21:22"
       "accountActive": false,
       "id": 3
     },

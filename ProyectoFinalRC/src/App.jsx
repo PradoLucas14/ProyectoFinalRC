@@ -51,6 +51,11 @@ function App() {
       <div className="App">
         <Navbar user={user} setUser={setUser}/>
         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/register" element={<RegisterUser />} />
+          <Route path="/HomePage" element={<HomePage />} />{/*creo qque esta ruta esta de mas porque incio seria '/'*/}
+          <Route path="/Login" element={<Login />} />
+
         <Route path="/" element={<HomePage user={user} />} />
           <Route path="/registro" element={<RegisterUser />} />
           <Route path="/AboutTeam" element={<AboutTeam />} />
