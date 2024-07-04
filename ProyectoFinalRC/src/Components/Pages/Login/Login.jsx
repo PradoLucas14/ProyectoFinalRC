@@ -13,23 +13,22 @@ const LoginPage = ({setUser}) => {
 
   const loginData=async(data)=>{
     try {
-      const response=await fetch('http://localhost:3001/login',{
+      const response=await fetch('http://localhost:3001/api/login',{
         method:'POST',
         headers:{
           'Content-type':'application/json'
       },
       body:JSON.stringify(data)
       })
-      if(response.status!=200){
-
-        const mensaje=await response.json()
-        enqueueSnackbar(mensaje.message,{variant:'error'})
+      const loginData=await response.json()
+      if(response.status!=200){        
+        enqueueSnackbar(loginData.message,{variant:'error'})
     }
       if(response.status===200){
-        const mensaje=await response.json()
-        enqueueSnackbar(mensaje.message,{variant:'succes'})
+        
+        enqueueSnackbar(loginData.message,{variant:'succes'})
       }
-      const loginData=await response.json()
+      
       const decoded=jwtDecode(loginData.accesToken)
       localStorage.setItem('isUserLogged',true)
          localStorage.setItem('token',loginData.accesToken)

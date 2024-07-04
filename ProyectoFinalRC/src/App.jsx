@@ -18,12 +18,12 @@ function App() {
   const [user,setUser]=useState({
     token:null,
     id:null,
-  email:null,
   isLoggedIn:false,
   role:null,
   })
+  const Logged=localStorage.getItem('Logged')
   const checkLogged=()=>{
-    if(isUserLogged){
+    if(Logged){
       const token=localStorage.getItem('token')
       const decoded=jwtDecode(token)
       setUser({
