@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Banner.css';
 
-function Banner() {
+function Banner({isLoggedIn}) {
   return (
     <div className="banner">
       <div className="overlay">
@@ -16,6 +16,7 @@ function Banner() {
                     "La Esencia de los nuestro pais en Tu Mesa: Reserva Fácilmente con Andinos y Déjate Sorprender por Nuestros Sabores"
                 </p>
                 <Link to="/login" className="btn btn-warning custom-btn mt-3">Reservar mesa</Link>
+                <Link to={isLoggedIn?'/reserve':'/Login'} className="btn btn-warning custom-btn mt-3">Reservar mesa</Link>
                 </div>
             </Col>
             <Col md={6} className="d-none d-md-block"></Col>

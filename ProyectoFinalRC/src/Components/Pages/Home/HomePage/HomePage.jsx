@@ -6,13 +6,15 @@ import Productos from '../Products/Productos';
 import { Link } from 'react-router-dom'; // Importa Link de react-router-dom
 import './HomePage.css';
 import Upload from '../../../Layout/Upload/Upload';
+import Contact from '../Contact/Contact'
 
-function HomePage() {
+
+function HomePage({user}) {
   return (
     <div className='HomePage' id='top'>
       <div className="Banner">
         <Upload/>
-        <Banner />
+        <Banner isLoggedIn={user.isLoggedIn}/>
       </div>
       <div className="About">
         <About />
