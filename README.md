@@ -57,9 +57,13 @@ https://tree.taiga.io/project/matiasperez00-grupo-1-proyecto-final-1/kanban
 
 
 Como probar este proyecto
+
 Para probar este proyecto recuerda clonarlo y seguir los siguientes pasos:
 
-npm install //para instalar las dependencias
-npm run dev //para comenzar a ejecutar el proyecto en modo desarrollo
+npm install   
+//para instalar las dependencias
+
+npm run dev 
+//para comenzar a ejecutar el proyecto en modo desarrollo
 
     
