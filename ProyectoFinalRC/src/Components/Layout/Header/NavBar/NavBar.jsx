@@ -59,7 +59,7 @@ const AppNavbar = ({user,setUser}) => {
                     )} */}
                     
                     {user.role === 'administrador' && (
-                    <Nav.Link to="/Administrador"  className="nav-link">Administración</Nav.Link>
+                    <Nav.Link as={Link} to="/Admin"  className="nav-link">Administración</Nav.Link>
                     )}
 
                     <Nav.Link href="#" className="nav-link" onClick={handleLogout}>Cerrar Sesión</Nav.Link>
