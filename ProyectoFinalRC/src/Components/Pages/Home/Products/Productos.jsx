@@ -22,7 +22,7 @@ const Productos = () => {
                         <Card className="h-100 product-card">
                             <Card.Img variant="top" src={product.image} />
                             <Card.Body>
-                                <Card.Title>{product.name}</Card.Title>
+                                <Card.Title className='c'>{product.name}</Card.Title>
                                 <Card.Text>{product.price}</Card.Text>
                             </Card.Body>
                         </Card>
