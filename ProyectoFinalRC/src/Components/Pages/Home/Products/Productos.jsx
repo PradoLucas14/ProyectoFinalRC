@@ -4,9 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './Productos.css';
 
 const productosData = [
-    { id: 1, name: 'Hamburgueza', price: '$100', image: 'https://w.forfun.com/fetch/7f/7fe483bfb112ec5acd4eb9fd4b93bd19.jpeg' },
-    { id: 2, name: 'Pizza', price: '$150', image: 'https://c4.wallpaperflare.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg' },
-    { id: 3, name: 'Empanadas', price: '$200', image: 'https://assets.elgourmet.com/wp-content/uploads/2023/03/cover_47tmx80joc_empandascarnejpg-1024x683.jpg.webp' },
+    { id: 1, name: 'Hamburgueza', price: '$200', image: 'https://w.forfun.com/fetch/7f/7fe483bfb112ec5acd4eb9fd4b93bd19.jpeg' },
+    { id: 2, name: 'Pizza', price: '$250', image: 'https://c4.wallpaperflare.com/wallpaper/1017/647/742/food-pizza-cheese-tomatoes-olives-hd-wallpaper-preview.jpg' },
+    { id: 3, name: 'Empanadas', price: '$50', image: 'https://assets.elgourmet.com/wp-content/uploads/2023/03/cover_47tmx80joc_empandascarnejpg-1024x683.jpg.webp' },
 ]
 
 const Productos = () => {

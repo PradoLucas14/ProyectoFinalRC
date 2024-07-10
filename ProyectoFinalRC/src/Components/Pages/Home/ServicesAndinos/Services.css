@@ -1,6 +1,6 @@
 .ServicesContainer{
     background-color: black;
-    padding: 80px 8% !important; 
+    padding: 60px 8% !important; 
 }
 .tittleContainerServices{
     padding: 0;
@@ -10,19 +10,71 @@
 .tittleContainerServices h2{
     color: #fff;
 }
-.imgContainer{
+.mb-0{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0 !important;
+}
+.descContServ{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.textContServ{
+    padding: 0;
+    margin: 0 5px;
+}
+.textContServ p{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #fff;
+}
+.imgContainer{
+    border: 3px solid orangered;
+    border-radius: 0 17px 0 17px;
+    height: 400px;
+    width: 350px;
+    margin: 0;
+    position: relative;
+    padding: 0;
+    margin-bottom: 20px;
+}
+.overlayImgServ{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0 17px 0 17px;
+    display: flex;
+    justify-content: center;
     flex-direction: column;
 }
-.imgContainer img{
-    margin-bottom: 20px;
-    border-radius: 50%;
-    border: 2px solid orangered;
+.img1serv{
+    background-image: url("../../../../assets/Img/ImgHome/servicio1.jpg");
+    background-size: cover;
+    background-position: center;
 }
-.description{
-    color: orangered;
-    font-size: 24px;
-    font-weight: 500;
+.img2serv{
+    background-image: url("../../../../assets/Img/ImgHome/servicio2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.img3serv{
+    background-image: url("../../../../assets/Img/ImgHome/servicio3.jpg");
+    background-size: cover;
+    background-position: center;
+}
+.descContServ{
+    height: 15%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    border-radius: 0 0px 0 15px;
+}
+.contenedorUno{
+    height: 85%;
 }
