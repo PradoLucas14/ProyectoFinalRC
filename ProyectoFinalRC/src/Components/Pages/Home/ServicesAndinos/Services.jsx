@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBurger , faChampagneGlasses , faIceCream } from '@fortawesome/free-solid-svg-icons';
 import './Services.css';
-import img1 from "../../../../assets/Img/ImgHome/empanada.png";
-import img2 from "../../../../assets/Img/ImgHome/coctel-con-rodaja-de-limon.png";
-import img3 from "../../../../assets/Img/ImgHome/pastel.png";
+
 
 function Services() {
   return (
@@ -13,22 +13,49 @@ function Services() {
           <h2>Nuestros servicios</h2>
         </div>
         <Row className='imgContainers'>
-          <Col md={4} className='mb-4'>
-            <div className='imgContainer'>
-              <img src={img1} alt='Empanada' className='img-fluid' />
-              <p className='description'>Comida tradicional</p>
+          <Col md={4} className='mb-0'>
+            <div className='imgContainer img1serv'>
+              <div className="overlayImgServ">
+                <div className="contenedorUno"></div>
+                <div className="descContServ">
+                  <div className="iconContServ">
+                    <FontAwesomeIcon icon={faBurger} style={{ color: "orangered" }} />
+                  </div>
+                  <div className="textContServ">
+                    <p>Platillos de especialidad</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </Col>
-          <Col md={4} className='mb-4'>
-            <div className='imgContainer'>
-              <img src={img2} alt='Coctel' className='img-fluid' />
-              <p className='description'>Cocteles</p>
+          <Col md={4} className='mb-0'>
+            <div className='imgContainer img2serv'>
+              <div className="overlayImgServ">
+                <div className="contenedorUno"></div>
+                <div className="descContServ">
+                  <div className="iconContServ">
+                    <FontAwesomeIcon icon={faChampagneGlasses} style={{ color: "orangered" }}  />
+                  </div>
+                  <div className="textContServ">
+                    <p>Cocteles personalizados</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </Col>
-          <Col md={4} className='mb-4'>
-            <div className='imgContainer'>
-              <img src={img3} alt='Pastel' className='img-fluid' />
-              <p className='description'>Repostería</p>
+          <Col md={4} className='mb-0'>
+            <div className='imgContainer img3serv'>
+              <div className="overlayImgServ">
+                <div className="contenedorUno"></div>
+                <div className="descContServ">
+                  <div className="iconContServ">
+                    <FontAwesomeIcon icon={faIceCream} style={{ color: "orangered" }}/>
+                  </div>
+                  <div className="textContServ">
+                    <p>Reposteria casera</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </Col>
         </Row>
