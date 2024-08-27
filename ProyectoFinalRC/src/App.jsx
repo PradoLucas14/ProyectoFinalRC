@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import './App.css';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
@@ -7,6 +6,7 @@ import Footer from './Components/Layout/Footer/Footer';
 
 import PrivateRouter from './routes/PrivateRouter';
 import PublicRouter from './routes/PublicRouter';
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState({
@@ -36,15 +36,16 @@ function App() {
   }, []);
 
   return (
-    <Router>
       <div className="App">
         <Navbar user={user} setUser={setUser} />
+        <BrowserRouter>
         {
           user.isLoggedIn?<PrivateRouter user={user} setUser={setUser}/>:<PublicRouter user={user} setUser={setUser}/>
         }
+        </BrowserRouter>
+        
         <Footer />
       </div>
-    </Router>
   );
 }
 

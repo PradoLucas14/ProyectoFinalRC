@@ -1,15 +1,27 @@
-import React from 'react';
-import { Navigate } from 'react-router-dom';
+import React from 'react'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Admin from '../Components/Pages/Admin/CrudUsers';
+import Reservas from '../Components/Pages/Reservas/Reservas';
+import Error404 from '../Components/Pages/Error404/Error404';
 
-const PrivateRoute = ({ isAllowed, isAdmin, children }) => {
-  if (!isAllowed) {
-    return <Navigate to='/' />;
-  } else {
-    if (isAdmin) {
-      // Si es administrador, permitir acceso a la ruta
-      return children;
-    } 
-  }
-};
+import HomePage from '../Components/Pages/Home/HomePage/HomePage';
 
-export default PrivateRoute;
+const PrivateRouter = ({user,setUser}) => {
+  return (
+    <Routes>
+      <Route path="/reserve" element={<Reservas />} />
+      <Route path="/" element={<HomePage user={user} />} />
+      {/* <Route 
+            path="/admin" 
+            element={
+              <PrivateRouter isAllowed={user.isLoggedIn} isAdmin={user.role === "Administrador"}>
+                <Admin />
+              </PrivateRouter>
+            } 
+          /> */}
+      <Route path="*" element={<Error404 />} />
+    </Routes>
+  )
+}
+
+export default PrivateRouter;
