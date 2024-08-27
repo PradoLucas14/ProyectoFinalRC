@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import HomePage from '../Components/Pages/Home/HomePage/HomePage';
 
 import Contact from '../Components/Pages/Home/Contact/Contact';
@@ -9,18 +9,18 @@ import Error404 from '../Components/Pages/Error404/Error404';
 import LoginPage from '../Components/Pages/Login/Login';
 import AboutTeam from '../Components/Pages/About/Aboutteam';
 
-const PublicRouter = (user,setUser) => {
+const PublicRouter = ({user,setUser}) => {
   return (
       <Routes>
-          <Route path="/" element={<HomePage user={user} />} />
-          <Route path="/registro" element={<RegisterForm />} />
+          <Route path="/" element={<Navigate to="/home"/>} />
+          <Route path='/home' element={<HomePage user={user}/> }/>
+          <Route path="/register" element={<RegisterForm />} />
           <Route path="/aboutteam" element={<AboutTeam />} />
           <Route path="/login" element={<LoginPage setUser={setUser} />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/imggalery" element={<Gallery />} />
+          <Route path="/galery" element={<Gallery />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
-    
   )
 }
 

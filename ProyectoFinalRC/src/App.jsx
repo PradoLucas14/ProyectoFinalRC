@@ -38,11 +38,10 @@ function App() {
   return (
       <div className="App">
         <Navbar user={user} setUser={setUser} />
-        <BrowserRouter>
         {
           user.isLoggedIn?<PrivateRouter user={user} setUser={setUser}/>:<PublicRouter user={user} setUser={setUser}/>
         }
-        </BrowserRouter>
+        
         
         <Footer />
       </div>
