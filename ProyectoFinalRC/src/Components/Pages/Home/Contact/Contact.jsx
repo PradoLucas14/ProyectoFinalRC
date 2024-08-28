@@ -1,11 +1,7 @@
 import React, { useRef }from 'react';
 import './Contact.css';
 import emailjs from '@emailjs/browser'
-import {useForm} from 'react-hook-form';
-
-
-
-
+import {useForm} from 'react-hook-form'
 
 const Contact = () => {
 

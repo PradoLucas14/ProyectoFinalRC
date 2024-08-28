@@ -93,7 +93,7 @@ const LoginPage = ({ setUser }) => {
           </Form>
           <p className="text-center mt-3">
             ¿No tienes cuenta?{' '}
-            <Link to="/registro" className="register-link">
+            <Link to="/Register" className="register-link">
               Regístrate aquí
             </Link>
           </p>

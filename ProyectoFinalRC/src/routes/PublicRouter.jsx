@@ -14,7 +14,7 @@ const PublicRouter = ({user,setUser}) => {
           <Route path="/" element={<Navigate to="/home"/>} />
           <Route path='/Home' element={<HomePage user={user}/> }/>
           <Route path="/Register" element={<RegisterForm />} />
-          <Route path="/aboutteam" element={<AboutTeam />} />
+          <Route path="/AboutTeam" element={<AboutTeam />} />
           <Route path="/Login" element={<LoginPage setUser={setUser} />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path="/Galery" element={<Gallery />} />
