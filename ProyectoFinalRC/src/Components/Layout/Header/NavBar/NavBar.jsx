@@ -49,7 +49,7 @@ const AppNavbar = ({user,setUser}) => {
             <div className='mx-auto'></div>
             <Nav className="list">
                 <Nav.Link as={Link} to="/" className="nav-link">Inicio</Nav.Link>
-                <Nav.Link as={Link} to="/ImgGalery" className="nav-link">Galería</Nav.Link>
+                <Nav.Link as={Link} to="/Galery" className="nav-link">Galería</Nav.Link>
                 <Nav.Link as={Link} to="/Contact"  className="nav-link">Contacto</Nav.Link>
                 
                 {user.isLoggedIn && (
@@ -62,7 +62,7 @@ const AppNavbar = ({user,setUser}) => {
                     <Nav.Link as={Link} to="/Admin"  className="nav-link">Administración</Nav.Link>
                     )}
 
-                    <Nav.Link href="#" className="nav-link" onClick={handleLogout}>Cerrar Sesión</Nav.Link>
+                    <Nav.Link as={Link} to='/Home' href="#" className="nav-link" onClick={handleLogout}>Cerrar Sesión</Nav.Link>
                 </React.Fragment>
                 )}
 

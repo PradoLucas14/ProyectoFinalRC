@@ -23,6 +23,7 @@ const LoginPage = ({ setUser }) => {
       console.log('Llegue a la consulta del response :',response.status)
       const loginData = await response.json();
       if (response.status !== 200) {
+        console.log(loginData);
         enqueueSnackbar(loginData.message, { variant: 'error' });
       } else {
         enqueueSnackbar(loginData.message, { variant: 'success' });
@@ -93,7 +94,7 @@ const LoginPage = ({ setUser }) => {
           </Form>
           <p className="text-center mt-3">
             ¿No tienes cuenta?{' '}
-            <Link to="/registro" className="register-link">
+            <Link to="/Register" className="register-link">
               Regístrate aquí
             </Link>
           </p>
