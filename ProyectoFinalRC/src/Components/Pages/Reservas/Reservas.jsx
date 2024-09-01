@@ -40,10 +40,11 @@ const Reservas = () => {
   };
 
   const validateTelephone = (value) => {
-    if (value) {
+    const telephoneStr = value.trim();
+    if (telephoneStr.length >= 6 && /^[0-9]+$/.test(telephoneStr)) {
       return "";
     }
-    return "Teléfono obligatorio.";
+    return "Teléfono inválido. Debe tener al menos 6 dígitos.";
   };
 
   const validateParticipants = (value) => {
@@ -187,7 +188,7 @@ const Reservas = () => {
               <div className="col-md-6">
                 <label htmlFor="telephone">Teléfono:</label>
                 <input
-                  type="text"
+                  type="number"
                   id="telephone"
                   name="telephone"
                   value={telephone}
