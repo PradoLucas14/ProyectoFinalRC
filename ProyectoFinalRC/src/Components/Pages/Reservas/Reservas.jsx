@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import "./Reservas.css";
 
 const Reservas = () => {
@@ -194,6 +195,7 @@ const Reservas = () => {
                   value={telephone}
                   onChange={(e) => handleChange(e, validateTelephone)}
                   className={`form-control ${errors.telephone ? 'input-error' : ''}`}
+                  min="0"
                 />
                 {errors.telephone && <p className="error-message">{errors.telephone}</p>}
               </div>
