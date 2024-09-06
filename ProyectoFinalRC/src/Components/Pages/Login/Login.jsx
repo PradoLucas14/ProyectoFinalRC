@@ -22,22 +22,24 @@ const LoginPage = ({ setUser }) => {
       });
       console.log('Llegue a la consulta del response :',response.status)
       const loginData = await response.json();
+      console.log(loginData);
       if (response.status !== 200) {
         console.log(loginData);
         enqueueSnackbar(loginData.message, { variant: 'error' });
       } else {
         enqueueSnackbar(loginData.message, { variant: 'success' });
         
-        const decoded = jwtDecode(loginData.accesToken);
+        const decoded = jwtDecode(loginData.accessToken);
         localStorage.setItem('isUserLogged', 'true');
-        localStorage.setItem('token', loginData.accesToken);
+        localStorage.setItem('token', loginData.accessToken);
 
         setUser({
-          token: loginData.accesToken,
+          token: loginData.accessToken,
           id: decoded.userId,
           isLoggedIn: true,
-          role: decoded.userRole,
+          role: decoded.userRole
         });
+        console.log(setUser.role,setUser);
         navigate('/');
       }
     } catch (error) {

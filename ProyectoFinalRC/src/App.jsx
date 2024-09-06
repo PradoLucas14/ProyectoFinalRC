@@ -16,7 +16,7 @@ function App() {
     role: null,
   });
 
-  const Logged = localStorage.getItem('Logged');
+  const Logged = localStorage.getItem('isUserLogged');
 
   const checkLogged = () => {
     if (Logged) {
