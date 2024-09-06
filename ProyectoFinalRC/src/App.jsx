@@ -26,21 +26,43 @@ function App() {
   const Logged = localStorage.getItem('isUserLogged');
 
   const checkLogged = () => {
-    if (Logged) {
-      const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    if (token) {
       const decoded = jwtDecode(token);
-      setUser({
-        token: token,
-        id: decoded.userId,
-        isLoggedIn: true,
-        role: decoded.userRole,
-      });
+      const currentTime = Date.now() / 1000;
+      if (decoded.exp < currentTime) {
+        localStorage.clear();
+        setUser({
+          token: null,
+          id: null,
+          isLoggedIn: false,
+          role: null,
+        });
+      } else {
+        setUser({
+          token: token,
+          id: decoded.userId,
+          isLoggedIn: true,
+          role: decoded.userRole,
+        });
+      }
     }
   };
 
   useEffect(() => {
     checkLogged();
+    const handleBeforeUnload = () => {
+      localStorage.clear();
+    };
+    window.addEventListener('beforeunload', handleBeforeUnload);
+     return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
   }, []);
+
+    useEffect(() => {
+      checkLogged();
+    }, [location]);
 
   return (
     
