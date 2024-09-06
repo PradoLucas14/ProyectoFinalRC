@@ -6,6 +6,7 @@ import './Navbar.css'; // Importa tu archivo de estilos CSS donde defines las cl
 
 const AppNavbar = ({user,setUser}) => {
   const handleLogout=()=>{
+    localStorage.clear();
     setUser({
       name:"",
     email:"",
@@ -54,9 +55,6 @@ const AppNavbar = ({user,setUser}) => {
                 
                 {user.isLoggedIn && (
                 <React.Fragment>
-                    {/* {userRole === 'cliente' && (
-                    <Nav.Link href="#" className="nav-link">Reservas</Nav.Link>
-                    )} */}
                     
                     {user.role === 'administrador' && (
                     <Nav.Link as={Link} to="/Admin"  className="nav-link">Administración</Nav.Link>
