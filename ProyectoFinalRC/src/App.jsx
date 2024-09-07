@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import './App.css';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -22,8 +22,6 @@ function App() {
     isLoggedIn: false,
     role: null,
   });
-
-  const Logged = localStorage.getItem('isUserLogged');
 
   const checkLogged = () => {
     const token = localStorage.getItem('token');
@@ -51,42 +49,46 @@ function App() {
 
   useEffect(() => {
     checkLogged();
-    const handleBeforeUnload = () => {
-      localStorage.clear();
+    const handleBeforeUnload = (event) => {
+      if (!event.persisted) {
+        localStorage.clear();
+      }
     };
     window.addEventListener('beforeunload', handleBeforeUnload);
-     return () => {
+    return () => {
       window.removeEventListener('beforeunload', handleBeforeUnload);
     };
   }, []);
 
-    useEffect(() => {
-      checkLogged();
-    }, [location]);
+  useEffect(() => {
+    checkLogged();
+  }, [location]);
 
   return (
-    
     <div className="App">
       {console.log(user)}
-      <Navbar user={user} setUser={setUser}/>
+      <Navbar user={user} setUser={setUser} />
       <Routes>
-      <Route path="/" element={<Navigate to={"/Home"} />} />
-      <Route path='/Home' element={<HomePage user={user}/> }/>
+        <Route path="/" element={<Navigate to={"/Home"} />} />
+        <Route path='/Home' element={<HomePage user={user} />} />
         <Route path="/Register" element={<RegisterForm />} />
         <Route path="/AboutTeam" element={<AboutTeam />} />
         <Route path="/Login" element={<LoginPage setUser={setUser} />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Galery" element={<Gallery />} />
         <Route path='/Reserve' 
-        element={
-        <PrivateRoute isAllowed={user.isLoggedIn}><Reservas/></PrivateRoute>}
-        />;
+          element={
+            <PrivateRoute isAllowed={user.isLoggedIn}><Reservas /></PrivateRoute>
+          } 
+        />
         <Route path='/Admin' 
-        element={<PrivateRoute isAllowed={user.isLoggedIn && user.role==="administrador"}><Admin/></PrivateRoute>}
-        />;
-        <Route path="*" element={<Error404 />} /> {/* Ruta para manejar cualquier otra ruta */}
+          element={
+            <PrivateRoute isAllowed={user.isLoggedIn && user.role === "administrador"}><Admin /></PrivateRoute>
+          } 
+        />
+        <Route path="*" element={<Error404 />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
