@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import HomePage from '../Components/Pages/Home/HomePage/HomePage';
-import Contact from '../Components/Pages/Home/Contact/Contact';
+import Contact from '../Components/Pages/Contact/Contact';
 import RegisterForm from '../Components/Pages/RegisterUser/RegisterUser';
 import Gallery from '../Components/Pages/ImgGalery/ImgGalery';
 import Error404 from '../Components/Pages/Error404/Error404';

@@ -20,8 +20,8 @@ function HomePage({user}) {
       <div className="Services">
         <Services />
       </div>
-      <div>
-      <Productos />
+      <div className='Products'>
+        <Productos />
       </div>
     </div>
   );
