@@ -66,7 +66,7 @@ const ContactForm = () => {
   return (
     <div className="Contact">
       <Container className="contact-form-container">
-        <h1 className="mt-0">Contacto</h1>
+        <h2 className="mt-0">Contacto</h2>
         <Form onSubmit={handleSubmit} noValidate>
           <Row>
             <Col md={6}>
