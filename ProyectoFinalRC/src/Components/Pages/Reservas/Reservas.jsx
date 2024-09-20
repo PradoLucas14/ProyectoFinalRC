@@ -20,6 +20,7 @@ const Reservas = () => {
     time: "",
   });
 
+  // Función para generar las opciones de tiempo en incrementos de 30 minutos
   const generateTimeOptions = () => {
     const times = [];
     for (let hour = 9; hour <= 23; hour++) {
@@ -33,6 +34,7 @@ const Reservas = () => {
 
   const timeOptions = generateTimeOptions();
 
+  // Funciones de validación local (puedes adaptarlas según las necesidades)
   const validateName = (value) => {
     if (/^[a-zA-Z\s]{6,}$/.test(value)) {
       return "";
@@ -42,10 +44,10 @@ const Reservas = () => {
 
   const validateTelephone = (value) => {
     const telephoneStr = value.trim();
-    if (telephoneStr.length >= 6 && /^[0-9]+$/.test(telephoneStr)) {
+    if (telephoneStr.length >= 7 && /^[0-9]+$/.test(telephoneStr)) {
       return "";
     }
-    return "Teléfono inválido. Debe tener al menos 6 dígitos.";
+    return "Teléfono inválido. Debe tener al menos 7 dígitos.";
   };
 
   const validateParticipants = (value) => {
@@ -76,8 +78,10 @@ const Reservas = () => {
     return "Hora obligatoria.";
   };
 
+  // Función para manejar los cambios en los campos del formulario
   const handleChange = (e, validator) => {
     const { id, value } = e.target;
+    
     switch (id) {
       case "name":
         setName(value);
@@ -88,8 +92,8 @@ const Reservas = () => {
         setErrors((prevErrors) => ({ ...prevErrors, telephone: validator(value) }));
         break;
       case "participants":
-        setParticipants(value);
-        setErrors((prevErrors) => ({ ...prevErrors, participants: validator(value) }));
+        setParticipants(Number(value)); // Convertir a número
+        setErrors((prevErrors) => ({ ...prevErrors, participants: validator(Number(value)) }));
         break;
       case "email":
         setEmail(value);
@@ -107,13 +111,16 @@ const Reservas = () => {
         break;
     }
   };
+  
 
-  const handleSubmit = (e) => {
+  // Función para manejar el envío del formulario
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     let hasError = false;
     const newErrors = {};
 
+    // Validaciones locales
     newErrors.name = validateName(name);
     newErrors.telephone = validateTelephone(telephone);
     newErrors.participants = validateParticipants(participants);
@@ -128,15 +135,18 @@ const Reservas = () => {
       return;
     }
 
-    axios.post("http://localhost:3001/api/reservas", {
-      name,
-      telephone,
-      participants,
-      email,
-      date,
-      time,
-    })
-    .then(response => {
+    try {
+      // Realizar la solicitud POST al backend
+      const response = await axios.post("http://localhost:3001/api/reservas", {
+        name,
+        telephone,
+        participants,
+        email,
+        date,
+        time,
+      });
+
+      // Si la reserva fue exitosa, mostrar la alerta de éxito
       Swal.fire({
         title: "Reserva exitosa",
         text: "Tu reserva ha sido registrada correctamente.",
@@ -147,17 +157,20 @@ const Reservas = () => {
         },
         buttonsStyling: false,
       });
+
+      // Restablecer el formulario
       setName("");
       setTelephone("");
       setParticipants(1);
       setEmail("");
       setDate("");
       setTime("");
-    })
-    .catch(error => {
+      setErrors({});
+    } catch (error) {
+      // Si hay un error en la reserva, mostrar la alerta de error
       Swal.fire({
         title: "Error",
-        text: "Hubo un problema al registrar tu reserva. Por favor, intenta nuevamente.",
+        text: error.response?.data?.error || "Hubo un problema al registrar tu reserva. Por favor, intenta nuevamente.",
         icon: "error",
         confirmButtonText: "OK",
         customClass: {
@@ -165,7 +178,7 @@ const Reservas = () => {
         },
         buttonsStyling: false,
       });
-    });
+    }
   };
 
   return (
@@ -250,17 +263,19 @@ const Reservas = () => {
                   onChange={(e) => handleChange(e, validateTime)}
                   className={`form-control ${errors.time ? 'input-error' : ''}`}
                 >
-                  <option value="">Selecciona una hora</option>
-                  {timeOptions.map((time, index) => (
-                    <option key={index} value={time}>
-                      {time}
+                  <option value="">Seleccione la hora</option>
+                  {timeOptions.map((timeOption) => (
+                    <option key={timeOption} value={timeOption}>
+                      {timeOption}
                     </option>
                   ))}
                 </select>
                 {errors.time && <p className="error-message">{errors.time}</p>}
               </div>
             </div>
-            <button type="submit" className="btn btn-dark mt-3">Registrar Reserva</button>
+            <button type="submit" className="btn btn-dark mt-4">
+              Confirmar reserva
+            </button>
           </form>
         </div>
       </div>
