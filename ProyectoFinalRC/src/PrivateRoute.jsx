@@ -1,7 +1,7 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
 
-const PrivRouter = ({isAllowed,children}) => {
+const PrivateRoute = ({isAllowed,children}) => {
   if(!isAllowed){
     return <Navigate to='/'/>
   }
@@ -11,4 +11,4 @@ const PrivRouter = ({isAllowed,children}) => {
     
 }
 
-export default PrivRouter
+export default PrivateRoute;
