@@ -1,14 +1,17 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-const PrivateRoute = ({isAllowed,children}) => {
-  if(!isAllowed){
-    return <Navigate to='/'/>
+const PrivateRoute = ({ isAllowed, children }) => {
+  if (!isAllowed) {
+    return <Navigate to='/' />;
+  } else {
+    return children;
   }
-  else{
-    return children
-  }
-    
-}
+};
+
+PrivateRoute.propTypes = {
+  isAllowed: PropTypes.bool.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default PrivateRoute;

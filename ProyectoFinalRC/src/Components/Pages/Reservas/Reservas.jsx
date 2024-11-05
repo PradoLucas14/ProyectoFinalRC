@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import "./Reservas.css";
@@ -139,7 +139,7 @@ const Reservas = () => {
     .then(response => {
       Swal.fire({
         title: "Reserva exitosa",
-        text: "Tu reserva ha sido registrada correctamente.",
+        text: `Tu reserva ha sido registrada correctamente:${response.data}`,
         icon: "success",
         confirmButtonText: "OK",
         customClass: {
@@ -157,7 +157,7 @@ const Reservas = () => {
     .catch(error => {
       Swal.fire({
         title: "Error",
-        text: "Hubo un problema al registrar tu reserva. Por favor, intenta nuevamente.",
+        text: `Hubo un problema al registrar tu reserva. Por favor, intenta nuevamente:${error}`,
         icon: "error",
         confirmButtonText: "OK",
         customClass: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import jwtDecode from 'jwt-decode';
 import './App.css';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
@@ -62,7 +62,7 @@ function App() {
 
   useEffect(() => {
     checkLogged();
-  }, [location]);
+  }, []);
 
   return (
     <div className="App">
