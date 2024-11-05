@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { jwtDecode } from 'jwt-decode';
+import { useEffect, useState, useCallback } from 'react';
+import jwtDecode from 'jwt-decode';
 import './App.css';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import Footer from './Components/Layout/Footer/Footer';
 
 import PrivateRouter from './routes/PrivateRouter';
 import PublicRouter from './routes/PublicRouter';
-import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   const [user, setUser] = useState({
@@ -18,7 +17,7 @@ function App() {
 
   const Logged = localStorage.getItem('Logged');
 
-  const checkLogged = () => {
+  const checkLogged = useCallback(() => {
     if (Logged) {
       const token = localStorage.getItem('token');
       const decoded = jwtDecode(token);
@@ -29,20 +28,18 @@ function App() {
         role: decoded.userRole,
       });
     }
-  };
+  }, [Logged]);
 
   useEffect(() => {
     checkLogged();
-  }, []);
+  }, [checkLogged]);
 
   return (
       <div className="App">
         <Navbar user={user} setUser={setUser} />
         {
-          user.isLoggedIn?<PrivateRouter user={user} setUser={setUser}/>:<PublicRouter user={user} setUser={setUser}/>
+          user.isLoggedIn ? <PrivateRouter user={user} setUser={setUser} /> : <PublicRouter user={user} setUser={setUser} />
         }
-        
-        
         <Footer />
       </div>
   );
