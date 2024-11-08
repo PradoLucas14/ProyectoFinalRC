@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import './App.css';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import { Navigate, Route, Routes } from 'react-router-dom';
@@ -77,14 +77,18 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Galery" element={<Gallery />} />
         <Route path='/Reserve' 
-          element={
-            <PrivateRoute isAllowed={user.isLoggedIn}><Reservas /></PrivateRoute>
-          } 
+               element={
+                <PrivateRoute isAllowed={user.isLoggedIn}>
+                <Reservas />
+                </PrivateRoute>
+                      } 
         />
         <Route path='/Admin' 
           element={
-            <PrivateRoute isAllowed={user.isLoggedIn && user.role === "administrador"}><Admin /></PrivateRoute>
-          } 
+                  <PrivateRoute isAllowed={user.isLoggedIn && user.role === "administrador"}>
+                  <Admin />
+                  </PrivateRoute>
+                  } 
         />
         <Route path="*" element={<Error404 />} />
       </Routes>

@@ -2,7 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './Login.css';
-import jwtDecode from 'jwt-decode';
+import {jwtDecode} from 'jwt-decode';
 import { useForm } from 'react-hook-form';
 import { enqueueSnackbar } from 'notistack';
 
