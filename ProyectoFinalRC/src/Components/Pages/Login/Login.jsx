@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Form, Button, Container } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom'; // Importa Link y useNavigate
+import { Link } from 'react-router-dom';
 import './Login.css';
-import { jwtDecode } from 'jwt-decode';
+import jwtDecode from 'jwt-decode';
 import { useForm } from 'react-hook-form';
 import { enqueueSnackbar } from 'notistack';
 
@@ -12,7 +12,7 @@ const LoginPage = ({ setUser }) => {
 
   const loginData = async (data) => {
     try {
-      console.log(data)
+      console.log(data);
       const response = await fetch('http://localhost:3001/api/login', {
         method: 'POST',
         headers: {
@@ -20,7 +20,7 @@ const LoginPage = ({ setUser }) => {
         },
         body: JSON.stringify(data),
       });
-      console.log('Llegue a la consulta del response :',response.status)
+      console.log('Llegue a la consulta del response :', response.status);
       const loginData = await response.json();
       console.log(loginData);
       if (response.status !== 200) {
@@ -28,7 +28,7 @@ const LoginPage = ({ setUser }) => {
         enqueueSnackbar(loginData.message, { variant: 'error' });
       } else {
         enqueueSnackbar(loginData.message, { variant: 'success' });
-        
+
         const decoded = jwtDecode(loginData.accessToken);
         localStorage.setItem('isUserLogged', 'true');
         localStorage.setItem('token', loginData.accessToken);
@@ -37,9 +37,9 @@ const LoginPage = ({ setUser }) => {
           token: loginData.accessToken,
           id: decoded.userId,
           isLoggedIn: true,
-          role: decoded.userRole
+          role: decoded.userRole,
         });
-        console.log(setUser.role,setUser);
+        console.log(decoded.role, setUser);
         navigate('/');
       }
     } catch (error) {
