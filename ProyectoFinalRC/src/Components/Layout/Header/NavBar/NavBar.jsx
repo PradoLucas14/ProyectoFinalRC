@@ -15,10 +15,11 @@ const AppNavbar = ({user,setUser}) => {
     id:""
     })
   }
-  const [userRole, setUserRole] = useState('cliente');
+  // const [userRole, setUserRole] = useState('cliente');
   const [navbarClass, setNavbarClass] = useState('navbar-transparent');
   const [Collapse , setCollapse] = useState(true)
 // console.log(user)
+// console.log(user.role)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -56,7 +57,7 @@ const AppNavbar = ({user,setUser}) => {
                 {user.isLoggedIn && (
                 <React.Fragment>
                     
-                    {user.role === 'administrador' && (
+                    {user.role === 'Administrador' && (
                     <Nav.Link as={Link} to="/Admin"  className="nav-link">Administración</Nav.Link>
                     )}
 
