@@ -47,18 +47,18 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    checkLogged();
-    const handleBeforeUnload = (event) => {
-      if (!event.persisted) {
-        localStorage.clear();
-      }
-    };
-    window.addEventListener('beforeunload', handleBeforeUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleBeforeUnload);
-    };
-  }, []);
+  // useEffect(() => {
+  //   checkLogged();
+  //   const handleBeforeUnload = (event) => {
+  //     if (!event.persisted) {
+  //       localStorage.clear();
+  //     }
+  //   };
+  //   window.addEventListener('beforeunload', handleBeforeUnload);
+  //   return () => {
+  //     window.removeEventListener('beforeunload', handleBeforeUnload);
+  //   };
+  // }, []);
 
   useEffect(() => {
     checkLogged();
@@ -85,7 +85,7 @@ function App() {
         />
         <Route path='/Admin' 
           element={
-                  <PrivateRoute isAllowed={user.isLoggedIn && user.role === "administrador"}>
+                  <PrivateRoute isAllowed={user.isLoggedIn && user.role === "Administrador"}>
                   <Admin />
                   </PrivateRoute>
                   } 

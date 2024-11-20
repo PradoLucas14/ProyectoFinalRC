@@ -19,7 +19,7 @@ const AppNavbar = ({user,setUser}) => {
   const [navbarClass, setNavbarClass] = useState('navbar-transparent');
   const [Collapse , setCollapse] = useState(true)
 // console.log(user)
-// console.log(user.role)
+console.log(user.role)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
