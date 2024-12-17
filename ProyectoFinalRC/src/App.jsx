@@ -46,27 +46,12 @@ function App() {
       }
     }
   };
-
-  // useEffect(() => {
-  //   checkLogged();
-  //   const handleBeforeUnload = (event) => {
-  //     if (!event.persisted) {
-  //       localStorage.clear();
-  //     }
-  //   };
-  //   window.addEventListener('beforeunload', handleBeforeUnload);
-  //   return () => {
-  //     window.removeEventListener('beforeunload', handleBeforeUnload);
-  //   };
-  // }, []);
-
   useEffect(() => {
     checkLogged();
   }, []);
 
   return (
     <div className="App">
-      {console.log(user)}
       <Navbar user={user} setUser={setUser} />
       <Routes>
         <Route path="/" element={<Navigate to={"/Home"} />} />
