@@ -1,9 +1,8 @@
 // src/components/ContactForm.js
-
-import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import './Contact.css'; // Importar el archivo CSS si es necesario
+import { useState } from 'react';
 
 const ContactForm = () => {
   const initialFormData = {
@@ -15,7 +14,7 @@ const ContactForm = () => {
   const [formData, setFormData] = useState(initialFormData);
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
-
+//Esta ultima linea muestra un error ya que submitted es asignada pero no usada,sin embargo no interfiere al momento de correr el programa
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
