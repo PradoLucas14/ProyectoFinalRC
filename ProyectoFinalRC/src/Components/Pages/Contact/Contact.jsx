@@ -1,9 +1,7 @@
-// src/components/ContactForm.js
-
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Swal from 'sweetalert2';
-import './Contact.css'; // Importar el archivo CSS si es necesario
+import './Contact.css';
 
 const ContactForm = () => {
   const initialFormData = {
@@ -55,8 +53,7 @@ const ContactForm = () => {
         icon: 'success',
         confirmButtonText: 'OK'
       });
-      setFormData(initialFormData); // Limpiar el formulario después de enviar
-      // Aquí puedes manejar el envío del formulario, por ejemplo, enviarlo a un servidor
+      setFormData(initialFormData); 
     } else {
       setErrors(errors);
       setSubmitted(false);
@@ -108,7 +105,7 @@ const ContactForm = () => {
                   value={formData.message}
                   onChange={handleChange}
                   isInvalid={!!errors.message}
-                  rows={6} // Puedes ajustar este valor según el alto que necesites
+                  rows={6} 
                   placeholder="Ingresa tu mensaje"
                   maxLength={100}
                 />
