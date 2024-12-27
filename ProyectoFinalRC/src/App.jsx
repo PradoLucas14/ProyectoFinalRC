@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { jwtDecode } from 'jwt-decode';
-import './App.css';
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import Footer from './Components/Layout/Footer/Footer';
-
 import PrivateRouter from './routes/PrivateRouter';
 import PublicRouter from './routes/PublicRouter';
-import { BrowserRouter } from 'react-router-dom';
+import './App.css';
 
 function App() {
   const [user, setUser] = useState({

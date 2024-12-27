@@ -36,7 +36,6 @@ const Admin = () => {
         setAccountActive(usuario.accountActive);
         setShowModal(true);
     };
-
     const handleSave = async () => {
         if (!currentUser) {
             console.error('No hay usuario actual definido para editar.');
