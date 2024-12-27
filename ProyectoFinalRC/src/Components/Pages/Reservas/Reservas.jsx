@@ -185,6 +185,7 @@ const Reservas = () => {
     <div className="reserva">
       <div className="reservaOverlay">
         <div className="containerFormulario">
+          <h3>Reservas:</h3>
           <form onSubmit={handleSubmit} className="reservas-form">
             <div className="row">
               <div className="col-md-6">
