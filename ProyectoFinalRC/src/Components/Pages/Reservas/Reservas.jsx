@@ -281,7 +281,7 @@ const Reservas = () => {
                 {errors.time && <p className="error-message">{errors.time}</p>}
               </div>
             </div>
-            <button type="submit" className="btn btn-dark mt-4">
+            <button type="submit" className="btnReservas mt-4">
               Confirmar reserva
             </button>
           </form>
