@@ -1,10 +1,7 @@
-// src/components/Reservas.jsx
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import { Button, Table, Modal, Form } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Reservas = () => {
   const [reservas, setReservas] = useState([]);
@@ -57,10 +54,24 @@ const Reservas = () => {
 
   const handleEditSubmit = async () => {
     try {
-      await axios.patch(`http://localhost:3001/api/reservas/${editData._id}`, formValues);
+      // Clonar el objeto formValues para evitar mutaciones no deseadas
+      const updatedValues = { ...editData, ...formValues };
+  
+      // Validar, sumar un día y formatear la fecha si está presente
+      if (formValues.date) {
+        const inputDate = new Date(formValues.date);
+        inputDate.setDate(inputDate.getDate() + 1); // Sumar un día
+        updatedValues.date = inputDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+      }
+  
+      // Enviar los datos actualizados al backend
+      await axios.patch(`http://localhost:3001/api/reservas/${editData._id}`, updatedValues);
+  
+      // Actualizar el estado local con los datos combinados
       setReservas(reservas.map(reserva =>
-        reserva._id === editData._id ? { ...reserva, ...formValues } : reserva
+        reserva._id === editData._id ? updatedValues : reserva
       ));
+  
       Swal.fire('Actualizado!', 'La reserva ha sido actualizada.', 'success');
       handleEditClose();
     } catch (error) {
@@ -121,7 +132,7 @@ const Reservas = () => {
         <h1>Listado de Reservas: </h1>
       </div>
 
-      <div className="table-responsive">
+      <div className="table-responsive mb-5">
         <Table striped bordered hover className="table-dark table-bordered text-center">
           <thead>
             <tr>
@@ -144,7 +155,7 @@ const Reservas = () => {
                 <td>{new Date(reserva.date).toLocaleDateString()}</td>
                 <td>{reserva.hora}</td>
                 <td>
-                  <Button onClick={() => handleEditShow(reserva)} variant="success" className="me-2">Editar</Button>
+                  <Button onClick={() => handleEditShow(reserva)} variant="info" className="me-2">Editar</Button>
                   <Button onClick={() => handleDelete(reserva._id)} variant="danger">Eliminar</Button>
                 </td>
               </tr>
@@ -195,79 +206,6 @@ const Reservas = () => {
           </Button>
           <Button variant="primary" onClick={handleEditSubmit}>
             Guardar Cambios
-          </Button>
-        </Modal.Footer>
-      </Modal>
-
-      {/* Modal para Registrar Nueva Reserva */}
-      <Modal show={showAddModal} onHide={handleAddClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Registrar Nueva Reserva</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Label>Nombre</Form.Label>
-              <Form.Control
-                type="text"
-                id="name"
-                value={newReserva.name}
-                onChange={handleNewFormChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Teléfono</Form.Label>
-              <Form.Control
-                type="text"
-                id="telephone"
-                value={newReserva.telephone}
-                onChange={handleNewFormChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Participantes</Form.Label>
-              <Form.Control
-                type="number"
-                id="participants"
-                value={newReserva.participants}
-                onChange={handleNewFormChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Fecha</Form.Label>
-              <Form.Control
-                type="date"
-                id="date"
-                value={newReserva.date}
-                onChange={handleNewFormChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Hora</Form.Label>
-              <Form.Control
-                type="time"
-                id="hora"
-                value={newReserva.hora}
-                onChange={handleNewFormChange}
-              />
-            </Form.Group>
-            <Form.Group className="mb-3">
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                id="email"
-                value={newReserva.email}
-                onChange={handleNewFormChange}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleAddClose}>
-            Cancelar
-          </Button>
-          <Button variant="primary" onClick={handleAddSubmit}>
-            Registrar Reserva
           </Button>
         </Modal.Footer>
       </Modal>
