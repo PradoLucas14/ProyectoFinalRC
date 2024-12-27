@@ -32,8 +32,12 @@
 }
 .col-md-6 input ,select{
     margin-top: 5px;
-    border: 2px solid orangered !important;
+    border: 2px solid transparent;
     border-radius: none !important;
+}
+.col-md-6 input:focus ,select:focus{
+    box-shadow: none !important;
+    border: 2px solid orangered;
 }
 .error-message {
     color: red;
