@@ -119,9 +119,6 @@ const Reservas = () => {
     <div className="reservas-container container mt-5">
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h1>Listado de Reservas: </h1>
-        <Button variant="primary" onClick={handleAddShow}>
-          Registrar Reserva
-        </Button>
       </div>
 
       <div className="table-responsive">

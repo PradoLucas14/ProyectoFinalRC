@@ -46,12 +46,13 @@
     font-weight: bold;
     font-size: 1rem;
     border-radius: 5px;
-    background-color: transparent;
+    background-color: orangered;
     margin-bottom: 15px;
     transition: 0.1s ease;
 }
 .btnReservas:hover{
     background-color: orangered;
+    border: 2px solid #fff;
 }
 .error-message {
     color: red;

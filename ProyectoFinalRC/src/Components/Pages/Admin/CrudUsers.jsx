@@ -131,7 +131,6 @@ const Admin = () => {
                     <table className="table table-dark table-striped table-bordered text-center">
                         <thead className="thead-dark">
                             <tr>
-                                <th>ID</th>
                                 <th>Nombre de usuario</th>
                                 <th>Email</th>
                                 <th>Rol</th>
@@ -143,7 +142,6 @@ const Admin = () => {
                             {usuarios.length > 0 ? (
                                 usuarios.map((usuario) => (
                                     <tr key={usuario._id}>
-                                        <td>{usuario._id}</td>
                                         <td>{usuario.username}</td>
                                         <td>{usuario.email}</td>
                                         <td>{usuario.role}</td>
@@ -154,12 +152,6 @@ const Admin = () => {
                                                 onClick={() => handleEdit(usuario)}
                                             >
                                                 Editar
-                                            </button>
-                                            <button
-                                                className="btn btn-danger btn-sm"
-                                                onClick={() => handleDelete(usuario._id)}
-                                            >
-                                                Eliminar
                                             </button>
                                         </td>
                                     </tr>

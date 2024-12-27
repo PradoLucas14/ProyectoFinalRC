@@ -5,6 +5,7 @@ import Services from '../ServicesAndinos/Services';
 import Productos from '../Products/Productos'; // Importa Link de react-router-dom
 import './HomePage.css';
 import Upload from '../../../Layout/Upload/Upload';
+import Admin from '../../Admin/Admin';
 
 
 function HomePage({user}) {
@@ -23,6 +24,7 @@ function HomePage({user}) {
       <div className='Products'>
         <Productos />
       </div>
+      <Admin/>
     </div>
   );
 }
