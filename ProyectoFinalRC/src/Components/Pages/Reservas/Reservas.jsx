@@ -191,6 +191,8 @@ const Reservas = () => {
               <div className="col-md-6">
                 <label htmlFor="name">Nombre:</label>
                 <input
+                  placeholder="Nombre"
+                  autoComplete="off"
                   type="text"
                   id="name"
                   name="name"
@@ -203,8 +205,10 @@ const Reservas = () => {
               <div className="col-md-6">
                 <label htmlFor="telephone">Teléfono:</label>
                 <input
+                  placeholder="Telefono"
                   type="number"
                   id="telephone"
+                  autoComplete="off"                  
                   name="telephone"
                   value={telephone}
                   onChange={(e) => handleChange(e, validateTelephone)}
@@ -219,6 +223,7 @@ const Reservas = () => {
                 <label htmlFor="participants">Participantes:</label>
                 <input
                   type="number"
+                  autoCapitalize="off"
                   id="participants"
                   name="participants"
                   value={participants}
@@ -231,6 +236,8 @@ const Reservas = () => {
               <div className="col-md-6">
                 <label htmlFor="email">Correo electrónico:</label>
                 <input
+                  placeholder="Correo electronico"
+                  autoComplete="off"                  
                   type="email"
                   id="email"
                   name="email"

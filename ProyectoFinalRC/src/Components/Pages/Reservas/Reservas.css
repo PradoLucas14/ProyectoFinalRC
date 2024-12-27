@@ -30,7 +30,11 @@
     font-size: 1.2rem;
     font-weight: bold;
 }
-.col-md-6 input
+.col-md-6 input ,select{
+    margin-top: 5px;
+    border: 2px solid orangered !important;
+    border-radius: none !important;
+}
 .error-message {
     color: red;
     font-size: 0.75rem;
