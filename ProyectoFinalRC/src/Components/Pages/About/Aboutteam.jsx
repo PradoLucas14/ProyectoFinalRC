@@ -1,4 +1,3 @@
-// src/AboutTeam.js
 import React from 'react';
 import './Aboutteam.css';
 
@@ -22,26 +21,6 @@ const AboutTeam = () => {
                     <div className="img1 img">
                         <div className="overlayImg">
                             <h3>Lucas Prado</h3>
-                        </div>
-                    </div>
-                    <div className="img2 img">
-                        <div className="overlayImg">
-                            <h3>Francisco Di Napoli</h3>
-                        </div>
-                    </div>
-                    <div className="img3 img">
-                        <div className="overlayImg">
-                            <h3>Alvaro Pissini</h3>
-                        </div>
-                    </div>
-                    <div className="img4 img">
-                        <div className="overlayImg">
-                            <h3>Ezequiel Lazarte</h3>
-                        </div>
-                    </div>
-                    <div className="img5 img">
-                        <div className="overlayImg">
-                            <h3>Leonel Pereyra</h3>
                         </div>
                     </div>
                     <div className="img6 img">

@@ -1,9 +1,15 @@
+<<<<<<< HEAD
 import { useEffect, useState } from 'react';
 import {jwtDecode} from 'jwt-decode';
 import './App.css';
+=======
+import React, { useEffect, useState } from 'react';
+import { jwtDecode } from 'jwt-decode';
+>>>>>>> fa34c73d53f7046aaaff67bbc3aaf64cb768a5a9
 import Navbar from './Components/Layout/Header/NavBar/NavBar';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Footer from './Components/Layout/Footer/Footer';
+<<<<<<< HEAD
 import PrivateRoute from './PrivateRoute';
 import Reservas from './Components/Pages/Reservas/Reservas';
 import LoginPage from './Components/Pages/Login/Login';
@@ -14,6 +20,11 @@ import Gallery from './Components/Pages/ImgGalery/ImgGalery';
 import Error404 from './Components/Pages/Error404/Error404';
 import Admin from './Components/Pages/Admin/CrudUsers';
 import Contact from './Components/Pages/Contact/Contact';
+=======
+import PrivateRouter from './routes/PrivateRouter';
+import PublicRouter from './routes/PublicRouter';
+import './App.css';
+>>>>>>> fa34c73d53f7046aaaff67bbc3aaf64cb768a5a9
 
 function App() {
   const [user, setUser] = useState({
