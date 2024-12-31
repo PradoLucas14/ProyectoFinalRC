@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { Form, Button, Modal } from 'react-bootstrap';
+import { useState } from 'react';
+import { Form, Button } from 'react-bootstrap';
 import Swal from 'sweetalert2';
 import './RegisterUser.css';
+import { useNavigate } from 'react-router-dom';
+
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +15,7 @@ const RegisterForm = () => {
 //   const [showVerificationModal, setShowVerificationModal] = useState(false);
 //   const [verificationCode, setVerificationCode] = useState('');
 //   const [enteredCode, setEnteredCode] = useState('');
-
+const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -128,6 +130,7 @@ const RegisterForm = () => {
                   text: 'Te has registrado exitosamente',
                 });
                 setFormData({ username: '', email: '', password: '', termsAccepted: false });
+                navigate('/');
                 // setShowVerificationModal(false);
               } else {
                 Swal.fire({

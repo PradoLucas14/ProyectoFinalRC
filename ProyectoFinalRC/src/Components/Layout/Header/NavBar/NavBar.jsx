@@ -1,11 +1,11 @@
-// src/components/layout/Navbar.js
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Navbar, Nav, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import './Navbar.css'; // Importa tu archivo de estilos CSS donde defines las clases
+import './Navbar.css'; 
 
 const AppNavbar = ({user,setUser}) => {
   const handleLogout=()=>{
+    localStorage.clear();
     setUser({
       name:"",
     email:"",
@@ -14,10 +14,11 @@ const AppNavbar = ({user,setUser}) => {
     id:""
     })
   }
-  const [userRole, setUserRole] = useState('cliente');
+  // const [userRole, setUserRole] = useState('cliente');
   const [navbarClass, setNavbarClass] = useState('navbar-transparent');
   const [Collapse , setCollapse] = useState(true)
 // console.log(user)
+console.log(user.role)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -45,18 +46,21 @@ const AppNavbar = ({user,setUser}) => {
             </svg></i>) : (<i className="bi bi-x-lg"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" className="bi bi-x-lg" viewBox="0 0 16 16">
             <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8z"/>
             </svg></i>)}
-        </Navbar.Toggle>
+        </Navbar.Toggle>        
         <Navbar.Collapse id="navbarNav">
             <div className='mx-auto'></div>
             <Nav className="list">
                 <Nav.Link as={Link} to="/" className="nav-link">Inicio</Nav.Link>
                 <Nav.Link as={Link} to="/Galery" className="nav-link">Galería</Nav.Link>
                 <Nav.Link as={Link} to="/Contact"  className="nav-link">Contacto</Nav.Link>
+                
                 {user.isLoggedIn && (
                 <React.Fragment>
-                    {user.role === 'administrador' && (
+                    
+                    {user.role === 'Administrador' && (
                     <Nav.Link as={Link} to="/Admin"  className="nav-link">Administración</Nav.Link>
                     )}
+
                     <Nav.Link as={Link} to='/Home' href="#" className="nav-link" onClick={handleLogout}>Cerrar Sesión</Nav.Link>
                 </React.Fragment>
                 )}
