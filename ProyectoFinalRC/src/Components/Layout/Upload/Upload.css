@@ -10,7 +10,7 @@
     text-decoration: none;
     font-size: 30px;
     text-align: center;
-    
+    z-index: 10000;
 }
 .boton-subir::after {
     content: "\25B2";

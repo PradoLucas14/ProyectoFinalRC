@@ -13,12 +13,9 @@ const AppNavbar = ({user,setUser}) => {
     role:"",
     id:""
     })
-  }
-  // const [userRole, setUserRole] = useState('cliente');
+  };
   const [navbarClass, setNavbarClass] = useState('navbar-transparent');
   const [Collapse , setCollapse] = useState(true)
-// console.log(user)
-console.log(user.role)
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
@@ -40,7 +37,7 @@ console.log(user.role)
     <Navbar expand="lg" variant="dark" className={`fixed-top navbar-custom ${navbarClass}`}>
       <Container fluid>
         <Navbar.Brand href="#" className='navTittle'>Andinos</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" className="custom-toggler" onClick={() => setCollapse(!Collapse)}>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" className="custom-toggler" onClick={() => setCollapse(!Collapse) && setNavbarClass('navbar-scroll')}>
             {Collapse ? (<i className="bi bi-list"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-list" viewBox="0 0 16 16">
             <path fillRule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
             </svg></i>) : (<i className="bi bi-x-lg"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="#fff" className="bi bi-x-lg" viewBox="0 0 16 16">
