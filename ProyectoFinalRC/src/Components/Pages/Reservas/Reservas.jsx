@@ -33,8 +33,6 @@ const Reservas = () => {
   };
 
   const timeOptions = generateTimeOptions();
-
-  // Funciones de validación local (puedes adaptarlas según las necesidades)
   const validateName = (value) => {
     if (/^[a-zA-Z\s]{6,}$/.test(value)) {
       return "";
@@ -78,7 +76,7 @@ const Reservas = () => {
     return "Hora obligatoria.";
   };
 
-  // Función para manejar los cambios en los campos del formulario
+  //Cambios en los campos del formulario
   const handleChange = (e, validator) => {
     const { id, value } = e.target;
     
@@ -112,8 +110,7 @@ const Reservas = () => {
     }
   };
   
-
-  // Función para manejar el envío del formulario
+  //Para el envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -145,32 +142,44 @@ const Reservas = () => {
         date,
         time,
       });
-
-      // Si la reserva fue exitosa, mostrar la alerta de éxito
-      Swal.fire({
-        title: "Reserva exitosa",
-        text: "Tu reserva ha sido registrada correctamente.",
-        icon: "success",
-        confirmButtonText: "OK",
-        customClass: {
-          confirmButton: "btn btn-dark",
-        },
-        buttonsStyling: false,
-      });
-
-      // Restablecer el formulario
-      setName("");
-      setTelephone("");
-      setParticipants(1);
-      setEmail("");
-      setDate("");
-      setTime("");
-      setErrors({});
+  
+      if (response.data && response.data.success) {
+        Swal.fire({
+          title: "Reserva exitosa",
+          text: "Tu reserva ha sido registrada correctamente.",
+          icon: "success",
+          confirmButtonText: "OK",
+          customClass: {
+            confirmButton: "btn btn-dark",
+          },
+          buttonsStyling: false,
+        });
+  
+        // Restablecer el formulario
+        setName("");
+        setTelephone("");
+        setParticipants(1);
+        setEmail("");
+        setDate("");
+        setTime("");
+        setErrors({});
+      } else {
+        Swal.fire({
+          title: "Error",
+          text: response.data.message || "Hubo un problema al registrar tu reserva. Por favor, intenta nuevamente.",
+          icon: "error",
+          confirmButtonText: "OK",
+          customClass: {
+            confirmButton: "btn btn-dark",
+          },
+          buttonsStyling: false,
+        });
+      }
     } catch (error) {
       // Si hay un error en la reserva, mostrar la alerta de error
       Swal.fire({
         title: "Error",
-        text: error.response?.data?.error || "Hubo un problema al registrar tu reserva. Por favor, intenta nuevamente.",
+        text: error.response?.data?.error || "Hubo un problema en la conexión. Por favor, intenta nuevamente.",
         icon: "error",
         confirmButtonText: "OK",
         customClass: {

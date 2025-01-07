@@ -12,9 +12,6 @@ const RegisterForm = () => {
     password: '',
     termsAccepted: false,
   });
-//   const [showVerificationModal, setShowVerificationModal] = useState(false);
-//   const [verificationCode, setVerificationCode] = useState('');
-//   const [enteredCode, setEnteredCode] = useState('');
 const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -28,7 +25,6 @@ const navigate = useNavigate();
     
     e.preventDefault();
 
-    // Validación de campos obligatorios
     if (!formData.username || !formData.email || !formData.password) {
       Swal.fire({
         icon: 'error',
@@ -66,51 +62,6 @@ const navigate = useNavigate();
       });
       return;
     }
-
-    // Enviar código de verificación
-//     try {
-//         console.log('entre a la verificacion de codigo')
-
-//       const response = await fetch('http://localhost:3001/api/send-verification-code', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ email: formData.email }),
-//       });
-//       console.log(response.status)
-//       if (response.ok) {
-
-//         setShowVerificationModal(true);
-//       } else {
-//         console.log()
-//         Swal.fire({
-//           icon: 'error',
-//           title: 'Error',
-//           text: 'Error al enviar el código de verificación',
-//         });
-//       }
-//     } catch (error) {
-//       Swal.fire({
-//         icon: 'error',
-//         title: 'Error',
-//         text: 'Error al enviar el código de verificación',
-//       });
-//     }
-//   };
-
-//   const handleVerification = async () => {
-//     try {
-//         console.log('Ingrese al verify code')
-//       const response = await fetch('http://localhost:3001/api/verify-code', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify({ email: formData.email, code: enteredCode }),
-//       });
-
-//       if (response.ok) {
         // Registro del usuario
         const userData = { ...formData, role: 'cliente', accountActive: true };
         console.log(userData)
@@ -144,23 +95,6 @@ const navigate = useNavigate();
             alert('Error con el servidor:',error)
         }
         
-    //   } else {
-
-    //     Swal.fire({
-    //       icon: 'error',
-    //       title: 'Error',
-    //       text: 'Código de verificación inválido',
-    //     });
-    //   }
-    // } catch (error) {
-    //   Swal.fire({
-    //     icon: 'error',
-    //     title: 'Error',
-    //     text: 'Error en la verificación',
-
-        
-    //   });
-    // }
   };
 
   const validateUsername = (username) => {
@@ -227,49 +161,6 @@ const navigate = useNavigate();
           </Button>
         </Form>
       </div>
-
-      {/* <Modal show={showVerificationModal} onHide={() => setShowVerificationModal(true)}>
-        <Modal.Header>
-          <Modal.Title>Verificación de Correo</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form.Group>
-            <Form.Label>Código de Verificación:</Form.Label>
-            <Form.Control
-              type='text'
-              value={enteredCode}
-              onChange={(e) => setEnteredCode(e.target.value)}
-              placeholder='Ingresa el código enviado a tu correo'
-              required
-            />
-          </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            variant='secondary'
-            onClick={() => {
-              Swal.fire({
-                title: '¿Estás seguro?',
-                text: 'Si sales, el registro será cancelado.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Sí, salir',
-                cancelButtonText: 'No, permanecer',
-              }).then((result) => {
-                if (result.isConfirmed) {
-                  setShowVerificationModal(false);
-                  setFormData({ username: '', email: '', password: '', termsAccepted: false });
-                }
-              });
-            }}
-          >
-            Cancelar
-          </Button>
-          <Button variant='primary' onClick={handleVerification}>
-            Verificar
-          </Button>
-        </Modal.Footer>
-      </Modal> */}
     </div>
   );
 };
