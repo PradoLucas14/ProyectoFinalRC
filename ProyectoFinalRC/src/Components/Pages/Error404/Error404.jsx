@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
+import { useNavigate } from 'react-router-dom';
 import './Error404.css';
 
 const Error404 = () => {
   const [isMobile, setIsMobile] = useState(false);
-  const navigate = useNavigate(); // Inicializa el hook
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     const handleResize = () => {
@@ -19,7 +19,7 @@ const Error404 = () => {
   }, []);
 
   const handleGoHome = () => {
-    navigate('/'); // Redirige a la página de inicio
+    navigate('/');
   };
 
   return (

@@ -1,6 +1,6 @@
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import Swal from 'sweetalert2';
-import './Contact.css'; // Importar el archivo CSS si es necesario
+import './Contact.css'; 
 import { useState } from 'react';
 
 const Contact = () => {

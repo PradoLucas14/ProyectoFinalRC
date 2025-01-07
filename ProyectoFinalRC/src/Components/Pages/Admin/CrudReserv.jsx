@@ -60,11 +60,11 @@ const Reservas = () => {
       // Validar, sumar un día y formatear la fecha si está presente
       if (formValues.date) {
         const inputDate = new Date(formValues.date);
-        inputDate.setDate(inputDate.getDate() + 1); // Sumar un día
-        updatedValues.date = inputDate.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+        inputDate.setDate(inputDate.getDate() + 1); 
+        updatedValues.date = inputDate.toISOString().split('T')[0]; 
       }
   
-      // Enviar los datos actualizados al backend
+      // Enviar al backend
       await axios.patch(`http://localhost:3001/api/reservas/${editData._id}`, updatedValues);
   
       // Actualizar el estado local con los datos combinados
