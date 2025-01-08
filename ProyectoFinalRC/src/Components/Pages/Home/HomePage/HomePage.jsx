@@ -5,7 +5,6 @@ import Services from '../ServicesAndinos/Services';
 import Productos from '../Products/Productos';
 import Upload from '../../../Layout/Upload/Upload';
 import './HomePage.css';
-import Error404 from '../../Error404/Error404';
 
 function HomePage({user}) {
   return (
